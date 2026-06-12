@@ -7,7 +7,7 @@ username = "Mohamad Reza Rajabi" // re-assign
 
 console.log(username);
 
-let userAge = 18; // integer
+let userAge = 18; // number
 
 console.log(userAge);
 
