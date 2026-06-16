@@ -176,11 +176,11 @@ Run HTML files in your browser.
 
 علاوه بر دوره سبزلرن از منابع زیر نیز استفاده می‌کنم:
 
-MDN Web Docs
-JavaScript.info
-FreeCodeCamp
-W3Schools
-مستندات رسمی JavaScript
+*MDN Web Docs
+*JavaScript.info
+*FreeCodeCamp
+*W3Schools
+مستندات رسمی JavaScript*
 ⭐ حمایت از پروژه
 
 اگر این مخزن برای شما مفید بود:
