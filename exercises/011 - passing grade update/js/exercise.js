@@ -39,7 +39,7 @@ if (isNaN(score)){
             }
         // NOTE: And inside each case we use break to exit the switch if that condition is true.
         }
-
+        
     } else {
         alert("please enter a score between 0-20")
     }
