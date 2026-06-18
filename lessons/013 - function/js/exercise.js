@@ -14,3 +14,11 @@ function float(num){
 }
 
 alert(float(13.45444));
+
+function sum(num1, num2){ // <-- local scope
+    f = num1 + num2
+    return f
+}
+
+alert(sum(10,15));  // <-- global scope
+
