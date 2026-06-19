@@ -1,5 +1,5 @@
-// property: A value that belongs to an object. (noun)  --> no ()
-// method:   A function that belongs to an object. (verb) --> needs ()
+// property: A value that belongs to an object. (noun)  --> no () --> blue rectangle
+// method:   A function that belongs to an object. (verb) --> needs () --> purple square
 
 let name = "Mohamad Reza";
 
