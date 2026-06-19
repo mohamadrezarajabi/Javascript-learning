@@ -5,7 +5,7 @@ let name = "Mohamad Reza";
 
 // --- PROPERTIES --- (just store information)
 console.log(name.length);       // 12  <-- how many characters
-
+//!NOTE:Stirng have only one property.
 // !NOTE: no () because we are READING a value, not doing an action.
 
 // --- METHODS --- (perform an action)
