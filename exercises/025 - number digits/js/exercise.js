@@ -1,4 +1,4 @@
-let number = +prompt("Enter the number: ");
+let number = Math.floor(+prompt("Enter the number: "));
 
 if (!isNaN(number)){
     number = String(number).trim();
