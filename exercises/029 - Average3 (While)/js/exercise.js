@@ -1,19 +1,20 @@
 let count = 0;
 let sum = 0;
-let number;
+let number = 0;
 
-while (true){
+while (number >= 0) {
     number = +prompt("please enter number: ");
-    if (number < 0 || isNaN(number)) {
-        break;
+    if (isNaN(number)) {
+        continue;
     }
-
-    count++;
-    sum += number
+    if (number >= 0) {
+        count++;
+        sum += number;
+    }
 }
 
 if (count === 0) {
     alert("No positive numbers entered");
-} else{
+} else {
     alert(sum / count);
 }
