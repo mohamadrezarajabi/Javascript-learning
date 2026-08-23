@@ -19,8 +19,14 @@ console.log(liElem.parentElement);// the <ul> that wraps this <li>
 
 liElem.style.color = "blue";      // sets inline CSS directly
 
-liElem.test = "testValue";        // you CAN add custom JS properties
-console.log(liElem.test);         // "testValue" --> but not a real HTML attribute
+liElem.test = "testValue";        // you CAN add custom JS property (not a real HTML attribute)
+
+// getAttribute --> reads an attribute exactly as written in the HTML
+console.log(liElem.getAttribute("id")); // "firstItem"
+
+// setAttribute --> sets/adds any HTML attribute (even custom ones)
+liElem.setAttribute("data-status", "active");
+console.log(liElem.getAttribute("data-status")); // "active"
 
 itemElems.forEach(function (element) {
   console.log(element);
@@ -30,4 +36,6 @@ itemElems.forEach(function (element) {
  * NOTE!
  * innerHTML re-parses the string as HTML (slower, XSS risk with user input)
  * textContent is safer & faster when you just need plain text
+ * property (liElem.test) vs attribute (setAttribute) --> properties are JS-only,
+ * attributes reflect/sync with the actual HTML markup
  */
