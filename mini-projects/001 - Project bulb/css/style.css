@@ -1,0 +1,27 @@
+.container{
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+.img-container{
+    margin-bottom: 1.5rem;
+}
+
+.container button{
+    border: 1px solid #000;
+    outline: none;
+    border-radius: 4px;
+    padding: 5px 1.5rem;
+    transition: all 0.4s ease;
+}
+
+.container button:hover{
+    transform: scale(1.05);
+    box-shadow: 1 1px 20px #000;
+}
+.container button:active{
+    transform: scale(0.9);
+}
