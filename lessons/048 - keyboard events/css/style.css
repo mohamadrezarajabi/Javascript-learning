@@ -1,0 +1,51 @@
+.form-card {
+  max-width: 320px;
+  margin: 60px auto;
+  padding: 24px;
+  border-radius: 12px;
+  background: #1e1e2e;
+  font-family: sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.field {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  color: #cdd6f4;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+input {
+  width: 93%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #45475a;
+  background: #313244;
+  color: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  border-color: #89b4fa;
+}
+
+.hint {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #a6adc8;
+  transition: color 0.2s;
+}
+
+.hint.valid {
+  color: #a6e3a1;
+}
+
+.hint.invalid {
+  color: #f38ba8;
+}
