@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>001</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container-login">
+      <div action="" method="get">
+        <div class="container-logo">
+          <img
+            src="/assets/002 - Form Login/logo.png"
+            alt=""
+            class="logo-brand"
+          />
+          <span>سبزلرن</span>
+        </div>
+        <div class="username-container">
+          <input
+            type="text"
+            name="username"
+            required
+            placeholder="...نام کاربری"
+            class="input input-username"
+          />
+          <div class="message message-username hidden">
+            نام کاربری باید بیش از 3 کارکتر باشد
+          </div>
+        </div>
+        <div class="password-container">
+          <input
+            type="password"
+            name="password"
+            required
+            placeholder="...گذرواژه"
+            class="input input-password"
+          />
+          <div class="message message-password hidden">
+            گذرواژه باید بیش از 8 کارکتر باشد
+          </div>
+        </div>
+        <button type="submit" class="btn" id="btn-login">ورود</button>
+        <div class="divider">
+          <span>ادامه دهید با</span>
+        </div>
+        <button type="submit" class="btn google-btn">
+          <img src="/assets/002 - Form Login/google.png" alt="" width="20px" />
+          <span>ورود با گوگل</span>
+        </button>
+      </div>
+      <div class="modal-screen hidden">
+        <div class="modal-card">
+            <img src="/assets/002 - Form Login/failed.png" alt="" class="model-img" width="30px">
+            <p>عملیات با موفقیت انجام نشد</p>
+            <button type="button" class="modal-button">تایید</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/Project.js"></script>
+  </body>
+</html>
