@@ -1,0 +1,27 @@
+body {
+  font-family: sans-serif;
+  background: #1e1e2e;
+  color: #fff;
+  padding: 30px;
+}
+
+
+.skills-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 16px;
+}
+
+.skills-list li {
+  background: #313244;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+#select-box {
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  margin-top: 6px;
+}
