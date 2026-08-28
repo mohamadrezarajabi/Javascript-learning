@@ -583,13 +583,3 @@ button:active {
     align-items: center;
   }
 }
-
-/* ----------- js ----------- */
-
-.error {
-  border: 1px solid #cd3030;
-}
-
-.success {
-  border: 1px solid #00c80b;
-}
