@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>005</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <div class="progress-steps">
+        <div class="progress-step">
+          <span class="step-number step-number--active">1</span>
+          <span class="step-title step-title--active">انتخاب مبدا و مقصد</span>
+        </div>
+        <div class="step-divider"></div>
+        <div class="progress-step">
+          <span class="step-number">2</span>
+          <span class="step-title">تایید و احراز هویت</span>
+        </div>
+        <div class="step-divider"></div>
+        <div class="progress-step">
+          <span class="step-number">3</span>
+          <span class="step-title">پرداخت و تایید نهایی</span>
+        </div>
+        <div class="step-divider"></div>
+        <div class="progress-step">
+          <span class="step-number">4</span>
+          <span class="step-title">دانلود و دریافت تیکت</span>
+        </div>
+      </div>
+      <main>
+        <form action="" method="get">
+          <h5>لطفا مشخصات زیر را تکمیل نمایید</h5>
+          <label for="full-name">نام و نام خانوادگی را وارد نمایید:</label>
+          <input type="text" name="name" id="full-name" placeholder="مثال:محمدرضا رجبی" required>
+          <label for="phone-number">شماره موبایل را وارد نمایید:</label>
+          <input type="text" name="phone" id="phone-number" placeholder="مثال:09121245874" required>
+          <label for="email-address">آدرس ایمیل رو وارد نمایید</label>
+          <input type="email" name="email" id="email-address" placeholder="مثال: Example@gmail.com" required>
+          <h5>لطفا مسیر مبدا و مقصد را وارد نمایید</h5>
+          <section class="origin">
+            <div class="province">
+              <label for="origin-province">استان مبدا را وارد نمایید</label>
+              <select name="start" id="origin-province" required>
+                <option value="" disabled selected>استان خود را انتخاب کنید</option>
+              </select>
+            </div>
+            <div class="city">
+              <label for="origin-city">شهر مبدا را وارد نمایید</label>
+              <select name="start" id="origin-city" required>
+                <option value="" disabled selected>شهر خود را انتخاب کنید</option>
+              </select>
+            </div>
+          </section>
+          <section class="destination">
+            <div class="province">
+              <label for="destination-province">استان مقصد را وارد نمایید</label>
+              <select name="end" id="destination-province" required>
+                <option value="" disabled selected>استان خود را انتخاب کنید</option>
+              </select>
+            </div>
+            <div class="city">
+              <label for="destination-city">شهر مقصد را وارد نمایید</label>
+              <select name="end" id="destination-city" required>
+                <option value="" disabled selected>شهر خود را انتخاب کنید</option>
+              </select>
+            </div>
+          </section>
+          <div class="form-actions">
+            <button type="reset" class="btn-cancel">انصراف</button>
+            <button type="submit" class="btn-confirm">تایید</button>
+          </div>
+        </form>
+        <div class="info-panel">
+          <h2>سفر آسان، مقصد نزدیک</h2>
+          <p>با خدمات مسافربری ما، سفر خود را با خیال راحت برنامه‌ریزی کنید. از انتخاب مسیر و رزرو بلیت گرفته تا پرداخت و دریافت تیکت، همه‌چیز ساده و سریع انجام می‌شود. مقصدتان هر کجا که باشد، ما تلاش می‌کنیم تجربه‌ای راحت، مطمئن و بدون دردسر برای شما فراهم کنیم.</p>
+        </div>
+      </main>
+    </div>
+    <script src="js/Project.js"></script>
+  </body>
+</html>
