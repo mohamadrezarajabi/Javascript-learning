@@ -32,11 +32,11 @@ btnLogin.addEventListener("click", function () {
   }
 
   if (password.length >= 8 && regex.test(password) && username.length > 3) {
-    imgModal.setAttribute("src", "/assets/002 - Form Login/success.png");
+    imgModal.setAttribute("src", "images/success.png");
     pModal.innerHTML = "عملیات با موفقیت انجام شد";
     screenModal.classList.remove("hidden");
   } else {
-    imgModal.setAttribute("src", "/assets/002 - Form Login/failed.png");
+    imgModal.setAttribute("src", "images/failed.png");
     pModal.innerHTML = "عملیات با موفقیت انجام نشد";
     screenModal.classList.remove("hidden");
   }
