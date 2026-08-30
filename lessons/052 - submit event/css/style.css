@@ -1,0 +1,33 @@
+.signup-form {
+  max-width: 300px;
+  margin: 60px auto;
+  padding: 20px;
+  border-radius: 12px;
+  background: #1e1e2e;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-family: sans-serif;
+}
+
+.signup-form input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #45475a;
+  background: #313244;
+  color: #fff;
+}
+
+.signup-form button {
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  background: #a6e3a1;
+  cursor: pointer;
+}
+
+.status {
+  color: #89b4fa;
+  font-size: 13px;
+  text-align: center;
+}
