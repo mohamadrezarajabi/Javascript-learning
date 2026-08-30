@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <button class="target-box">Click Me</button>
+      <ul class="coords-list">
+        <li>clientX: <span id="clientX">-</span></li>
+        <li>clientY: <span id="clientY">-</span></li>
+        <li>screenX: <span id="screenX">-</span></li>
+        <li>screenY: <span id="screenY">-</span></li>
+        <li>pageX: <span id="pageX">-</span></li>
+        <li>pageY: <span id="pageY">-</span></li>
+        <li>offsetX: <span id="offsetX">-</span></li>
+        <li>offsetY: <span id="offsetY">-</span></li>
+      </ul>
+
+      <input
+        type="text"
+        class="text-input"
+        placeholder="Type and press Enter..."
+      />
+      <p class="live-value">Typed value: <span id="liveValue">-</span></p>
+      <p class="status" id="enterStatus">Waiting for Enter...</p>
+    </div>
+    <script src="js/app.js"></script>
+  </body>
+</html>
