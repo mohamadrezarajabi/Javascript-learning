@@ -1,0 +1,38 @@
+.wrap {
+  max-width: 320px;
+  margin: 60px auto;
+  padding: 20px;
+  border-radius: 12px;
+  background: #1e1e2e;
+  color: #fff;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: center;
+}
+
+input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #45475a;
+  background: #313244;
+  color: #fff;
+}
+
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #89b4fa;
+  cursor: pointer;
+}
+
+.status {
+  font-size: 13px;
+  color: #f38ba8;
+}
+
+.status.removed {
+  color: #a6e3a1;
+}
