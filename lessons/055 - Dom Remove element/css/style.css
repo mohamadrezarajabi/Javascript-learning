@@ -1,0 +1,45 @@
+.wrap {
+  max-width: 300px;
+  margin: 60px auto;
+  padding: 20px;
+  border-radius: 12px;
+  background: #1e1e2e;
+  color: #fff;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #f38ba8;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.items {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.list-item {
+  background: #313244;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.list-item:hover {
+  background: #45475a;
+}
+
+.status {
+  margin-top: 14px;
+  font-size: 13px;
+  color: #a6adc8;
+}
