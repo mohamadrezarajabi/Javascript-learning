@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>009</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="stage">
+      <aside class="side">
+        <div class="side-top">
+          <div class="brand">
+            <img src="images/Logo.PNG" alt="لوگو" />
+            <span>MRXEVO</span>
+          </div>
+          <h1 class="side-heading">به مسیر یادگیریت <em>ادامه بدهههه</em></h1>
+          <p class="side-sub">
+            وارد حساب کاربری‌ات شو و دوره‌ها، پیشرفت و پروژه‌هاتو از همون‌جایی
+            که گذاشتی دنبال کن.
+          </p>
+        </div>
+
+        <div class="side-illustration">
+          <img src="images/student.png" alt="تصویر" />
+          <div class="txt">
+            <b>هزاران دانشجو، یک مسیر</b>
+            این بخش رو می‌تونی برای نمایش آمار، نظرات کاربران یا معرفی امکانات
+            استفاده کنی.
+          </div>
+        </div>
+      </aside>
+
+      <main class="form-wrap">
+        <div class="form-head">
+          <h1>خوش برگشتی 👋</h1>
+          <p>برای ادامه، وارد حساب کاربری‌ات شو.</p>
+        </div>
+
+        <form>
+          <div class="field">
+            <label for="username">نام کاربری یا ایمیل</label>
+            <div class="input-shell">
+              <input
+                id="username"
+                name="username"
+                type="text"
+                placeholder="مثلاً محمدرضا رجبی"
+                autocomplete="username"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="password">رمز عبور</label>
+            <div class="input-shell">
+              <input
+                id="password"
+                name="password"
+                type="password"
+                placeholder="رمز عبورت رو وارد کن"
+                autocomplete="current-password"
+              />
+              <button
+                type="button"
+                class="eye-btn"
+                id="toggleEye"
+                aria-label="نمایش رمز عبور"
+              >
+                <svg
+                  class="eye-on"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M1.5 12s4-7.5 10.5-7.5S22.5 12 22.5 12s-4 7.5-10.5 7.5S1.5 12 1.5 12Z"
+                  />
+                  <circle cx="12" cy="12" r="3.2" />
+                </svg>
+                <svg
+                  class="eye-off"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 3l18 18" />
+                  <path
+                    d="M10.6 5.2A10.7 10.7 0 0 1 12 5c6.5 0 10.5 7 10.5 7a17.7 17.7 0 0 1-3.3 4.3M6.6 6.6C3.4 8.5 1.5 12 1.5 12s4 7 10.5 7c1.6 0 3-.4 4.2-1"
+                  />
+                  <path d="M9.9 9.9a3.2 3.2 0 0 0 4.2 4.2" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="row-between">
+            <label class="checkbox">
+              <input type="checkbox" id="remember" />
+              مرا به خاطر بسپار
+            </label>
+            <a href="#" class="link">رمزت یادت رفته؟</a>
+          </div>
+
+          <button type="submit" class="submit-btn">ورود به حساب</button>
+        </form>
+
+        <div class="divider">یا ادامه بده با</div>
+
+        <div class="oauth">
+          <button type="button" class="oauth-btn">
+            <img src="images/google.png" alt="گوگل" />
+            ورود با گوگل
+          </button>
+          <button type="button" class="oauth-btn">
+            <img src="images/meta.png" alt="متا" />
+            ورود با متا
+          </button>
+        </div>
+
+        <p class="footnote">
+          هنوز حساب نداری؟ <a href="#" class="link">ثبت‌نام کن</a>
+        </p>
+      </main>
+    </div>
+    <script src="js/Project.js"></script>
+  </body>
+</html>
