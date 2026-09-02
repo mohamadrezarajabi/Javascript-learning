@@ -1,0 +1,32 @@
+.wrap {
+  max-width: 320px;
+  margin: 60px auto;
+  padding: 20px;
+  border-radius: 12px;
+  background: #1e1e2e;
+  color: #fff;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.results {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.results li {
+  background: #313244;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.results span {
+  color: #a6e3a1;
+  font-weight: bold;
+}
