@@ -1,7 +1,6 @@
 /*
  * Node !== Node.js --> completely different things with the same name
  * Node (here) --> a built-in JS interface/type, every DOM element/text/comment is a "Node"
- * Node.js --> a separate runtime for running JS outside the browser (server-side)
  */
 
 const titleElem = document.querySelector(".title");
