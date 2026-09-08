@@ -14,7 +14,7 @@
   <body>
     <header class="header-wrapper">
       <div class="logo">
-        <img src="./images/Logo.jpg" alt="Logo" width="60px" />
+        <img src="./images/Logo.webp" alt="Logo" width="60px" />
         <div class="paragraph">
           <h3>تودو لیست</h3>
           <p>هر قدم کوچک, یک پیشرفت بزرگه...</p>
@@ -40,8 +40,10 @@
         </button>
       </nav>
       <div class="task-filters">
-
-        <button class="filter-btn filter-btn--all filter-btn-color-select" type="button">
+        <button
+          class="filter-btn filter-btn--all filter-btn-color-select"
+          type="button"
+        >
           <span class="filter-btn__text">
             همه <span class="filter-btn__count">۳</span>
           </span>
@@ -93,7 +95,10 @@
           </svg>
         </button>
 
-        <button class="filter-btn filter-btn--completed filter-btn-color-unselect" type="button">
+        <button
+          class="filter-btn filter-btn--completed filter-btn-color-unselect"
+          type="button"
+        >
           <span class="filter-btn__text">
             انجام شده <span class="filter-btn__count">۰</span>
           </span>
@@ -124,52 +129,83 @@
           </svg>
         </button>
 
-        <button class="filter-btn filter-btn--deleted filter-btn-color-unselect" type="button">
+        <button
+          class="filter-btn filter-btn--deleted filter-btn-color-unselect"
+          type="button"
+        >
           <span class="filter-btn__text">
             انجام نشده <span class="filter-btn__count">۰</span>
           </span>
 
-          <svg
+          <img
+            src="./images/error-circle.svg"
             class="filter-btn__icon"
             width="24"
             height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5 7H19"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-
-            <path
-              d="M9 7V5H15V7"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-
-            <path
-              d="M7 7L8 19H16L17 7"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linejoin="round"
-            />
-
-            <path
-              d="M10 11V16M14 11V16"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-          </svg>
+            alt="error"
+          />
         </button>
       </div>
+      <h2 class="task-element-h2 hidden">کاری برای انجام دادن نداری؟</h2>
       <ul class="todo-list"></ul>
+      <div class="task-modal__overlay">
+        <div class="task-modal">
+          <div class="task-modal__header">
+            <p class="task-modal__title">ایجاد تسک جدید</p>
+          </div>
+          <form action="" class="task-modal__form">
+            <div class="task-modal__input">
+              <label for="" class="task-modal__label">عنوان تسک</label>
+              <input
+                type="text"
+                id="task-modal__caption"
+                placeholder="مثال:انجام تکالیف"
+                required
+              />
+            </div>
+            <div class="task-modal__input">
+              <label for="" class="task-modal__label">توضیحات</label>
+              <input
+                type="text"
+                id="task-modal__description"
+                placeholder="اختیاری"
+              />
+            </div>
+            <div class="task-modal__action">
+              <button
+                type="button"
+                class="task-modal__btn task-modal__cancel cancel"
+              >
+                لغو
+              </button>
+              <button
+                type="submit"
+                class="task-modal__btn task-modal__submit confirm"
+              >
+                ایجاد تسک
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="delete-modal_overlay">
+        <div class="delete-modal__content">
+          <p>ایا مطمئن هستید؟</p>
+          <div class="delete-modal__actions">
+            <button class="delete-modal__btn delete-modal__cancel cancel">
+              لغو
+            </button>
+            <button class="delete-modal__btn delete-modal__confirm confirm">
+              پاکش کن
+            </button>
+          </div>
+        </div>
+      </div>
     </main>
+    <footer>
+      <p class="footer-title">هدف فقظ یک رویاست...</p>
+      <p class="footer-title">تا زمانی که براش تلاش کنی</p>
+    </footer>
     <script src="js/Project.js"></script>
   </body>
 </html>
