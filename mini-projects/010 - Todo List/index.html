@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>010</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="header-wrapper">
+      <div class="logo">
+        <img src="./images/Logo.jpg" alt="Logo" width="60px" />
+        <div class="paragraph">
+          <h3>تودو لیست</h3>
+          <p>هر قدم کوچک, یک پیشرفت بزرگه...</p>
+        </div>
+      </div>
+      <a href="../009 - Form Login 2/index.html" class="a-login">Login/Sign</a>
+    </header>
+    <main class="main-wrapper">
+      <nav>
+        <div class="main-nav-text">
+          <h2>لیست کار های من</h2>
+        </div>
+        <button class="main-nav-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+            <path
+              opacity=".4"
+              d="M256 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 160-160 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l160 0 0 160c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160 160 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-160 0 0-160z"
+            />
+            <path d="" />
+          </svg>
+          <span>ایجاد تسک جدید</span>
+        </button>
+      </nav>
+      <div class="task-filters">
+
+        <button class="filter-btn filter-btn--all filter-btn-color-select" type="button">
+          <span class="filter-btn__text">
+            همه <span class="filter-btn__count">۳</span>
+          </span>
+
+          <svg
+            class="filter-btn__icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="4"
+              y="4"
+              width="6"
+              height="6"
+              rx="1"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+            <rect
+              x="14"
+              y="4"
+              width="6"
+              height="6"
+              rx="1"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+            <rect
+              x="4"
+              y="14"
+              width="6"
+              height="6"
+              rx="1"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+            <rect
+              x="14"
+              y="14"
+              width="6"
+              height="6"
+              rx="1"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+          </svg>
+        </button>
+
+        <button class="filter-btn filter-btn--completed filter-btn-color-unselect" type="button">
+          <span class="filter-btn__text">
+            انجام شده <span class="filter-btn__count">۰</span>
+          </span>
+
+          <svg
+            class="filter-btn__icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              r="9"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+
+            <path
+              d="M8 12L10.5 14.5L16 9"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+
+        <button class="filter-btn filter-btn--deleted filter-btn-color-unselect" type="button">
+          <span class="filter-btn__text">
+            انجام نشده <span class="filter-btn__count">۰</span>
+          </span>
+
+          <svg
+            class="filter-btn__icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 7H19"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+
+            <path
+              d="M9 7V5H15V7"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+            <path
+              d="M7 7L8 19H16L17 7"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"
+            />
+
+            <path
+              d="M10 11V16M14 11V16"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+      <ul class="todo-list"></ul>
+    </main>
+    <script src="js/Project.js"></script>
+  </body>
+</html>
