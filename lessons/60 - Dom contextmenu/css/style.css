@@ -1,0 +1,41 @@
+.wrap {
+  max-width: 340px;
+  margin: 60px auto;
+  padding: 40px 20px;
+  border-radius: 12px;
+  background: #1e1e2e;
+  color: #fff;
+  font-family: sans-serif;
+  text-align: center;
+  position: relative;
+}
+
+.custom-menu {
+  position: fixed;
+  list-style: none;
+  padding: 6px 0;
+  margin: 0;
+  background: #313244;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  display: none; /* hidden by default */
+  min-width: 140px;
+  z-index: 999;
+}
+
+.custom-menu li {
+  padding: 10px 16px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.custom-menu li:hover {
+  background: #45475a;
+}
+
+.status {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #a6e3a1;
+}
