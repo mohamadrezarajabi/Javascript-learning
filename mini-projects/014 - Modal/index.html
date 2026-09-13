@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>012</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="loading" onload="Showloading()">
+    <div class="loader">
+      <!-- From Uiverse.io by alexruix -->
+      <div class="container-loader">
+        <div class="loader-shadow"></div>
+      </div>
+    </div>
+    <button class="login-button">
+      <span>قوانین و مقررات</span>
+      <span class="login-button__icon">⌄</span>
+    </button>
+
+    <!-- fixed: added role="dialog"/aria-modal/aria-labelledby so screen readers announce this as a modal dialog -->
+    <div class="modal-screen hidden">
+      <article
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <header class="modal__header">
+          <div class="modal__title">
+            <span class="modal__icon">✓</span>
+
+            <div>
+              <span id="modal-title">قوانین و مقررات</span>
+              <!-- fixed: added id="modal-title" so aria-labelledby above can reference it -->
+              <small>لطفاً قبل از ادامه مطالعه کنید</small>
+            </div>
+          </div>
+
+          <button class="close-x-btn" aria-label="بستن">&times;</button>
+        </header>
+
+        <main class="modal__content">
+          <p>
+            کاربر گرامی، این پروژه بخشی از مسیر یادگیری و پروژه‌های شخصی
+            «CodeVerse» است که توسط محمدرضا رجبی طراحی و توسعه داده شده. استفاده
+            از این صفحه صرفاً جهت نمایش مهارت‌ها و تمرین توسعه رابط کاربری بوده
+            و هیچ‌گونه داده‌ی واقعی کاربران در آن ذخیره یا پردازش نمی‌شود.
+          </p>
+
+          <p>
+ورود یا استفاده از این دمو به معنای پذیرفتن این نکته است که تمامی محتوا، متن‌ها و داده‌های نمایش‌داده‌شده صرفاً جنبه‌ی آزمایشی دارند و ممکن است در نسخه‌های بعدی، همراه با پیشرفت مهارت‌های من در مسیر توسعه‌ی فول‌استک، تغییر کنند یا کامل‌تر شوند.
+          </p>
+
+          <div class="notice">
+            <span class="notice__icon">!</span>
+
+            <p>
+              با انتخاب گزینه «پذیرفتن قوانین»، تأیید می‌کنید که قوانین و مقررات
+              استفاده از سرویس را مطالعه کرده‌اید.
+            </p>
+          </div>
+        </main>
+
+        <!-- added: این کل footer قبلاً توی HTML نبود؛ JS به .close و .continue رفرنس می‌داد ولی هیچ‌کدوم وجود نداشتن -->
+        <footer class="modal__footer">
+          <button type="button" class="modal__btn close">بستن</button>
+          <button type="button" class="modal__btn continue">
+            پذیرفتن قوانین
+          </button>
+        </footer>
+
+        <!-- MR Signature Footer -->
+        <footer class="mr-signature" dir="ltr" lang="en">
+          <div class="mr-signature__identity">
+            <img
+              src="./images/Logo.webp"
+              alt="logo"
+              class="mr-signature__badge"
+              aria-hidden="true"
+            />
+            <span class="mr-signature__text">
+              <span class="mr-signature__name">Mohamad Reza Rajabi</span>
+              <span class="mr-signature__role">— design &amp; development</span>
+            </span>
+          </div>
+          <div class="mr-signature__links">
+            <span class="mr-signature__year">© <span data-year></span></span>
+            <a
+              href="https://github.com/mohamadrezarajabi"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub profile"
+            >
+              <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
+                />
+              </svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+          <script>
+            document
+              .querySelectorAll(".mr-signature [data-year]")
+              .forEach(function (el) {
+                el.textContent = new Date().getFullYear();
+              });
+          </script>
+        </footer>
+      </article>
+    </div>
+
+    <script src="js/Project.js"></script>
+  </body>
+</html>
