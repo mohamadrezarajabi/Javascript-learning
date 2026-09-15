@@ -23,10 +23,21 @@ const parts = new Intl.DateTimeFormat("fa-IR", {
 const get = (type) => parts.find((p) => p.type === type)?.value;
 
 const result = `${get("day")} ${get("month")} ${get("hour")}:${get("minute")}`;
+const timeResult = `${get("hour")}:${get("minute")}`;
 
 /* ---------------------------------- */
 
 let notes = [];
+
+const tags = [
+  { name: "برنامه‌نویسی", color: "#8a5cf6", className: "tag-purple" },
+  { name: "ورزش", color: "#10b981", className: "tag-green" },
+  { name: "درس", color: "#3b82f6", className: "tag-blue" },
+  { name: "کار", color: "#f59e0b", className: "tag-orange" },
+  { name: "شخصی", color: "#ec4899", className: "tag-pink" },
+];
+
+let selectedTag = tags[0];
 
 // -------------------------
 
@@ -38,46 +49,12 @@ inputSearch.addEventListener("blur", function () {
 });
 
 document.body.addEventListener("keyup", function (event) {
-  console.log(event);
-
   if (event.key === "k" && event.ctrlKey === true) {
     inputSearch.focus();
   }
 });
 
 /* --------------------------- */
-
-const tags = [
-  {
-    name: "برنامه‌نویسی",
-    color: "#8b5cf6",
-    className: "tag-purple",
-  },
-
-  {
-    name: "ورزش",
-    color: "#10b981",
-    className: "tag-green",
-  },
-
-  {
-    name: "درس",
-    color: "#3b82f6",
-    className: "tag-blue",
-  },
-
-  {
-    name: "کار",
-    color: "#f59e0b",
-    className: "tag-orange",
-  },
-
-  {
-    name: "شخصی",
-    color: "#ec4899",
-    className: "tag-pink",
-  },
-];
 
 const tagWrapper = document.querySelector(".tag-wrapper");
 const tagBtn = document.querySelector(".tag-btn");
@@ -89,6 +66,8 @@ tagBtn.addEventListener("click", function () {
 });
 
 function selectTag(tag) {
+  selectedTag = tag;
+
   tagName.textContent = tag.name;
 
   tagBtn.classList.remove(
@@ -128,8 +107,21 @@ selectTag(tags[0]);
 
 /*------------------------------*/
 
-function RenderNotes(event) {
-  notes.forEach(function () {
+let editingNote = null;
+
+const btnCreate = document.querySelector(".create-tasks");
+const modalCreate = document.querySelector(".editor");
+const CloseModalCreate = document.querySelector(".back-btn");
+const dateInfoTime = document.querySelector(".date-info");
+const inputModalCreate = document.querySelector(".note-title");
+const noteContent = document.querySelector(".note-content");
+const saveBtn = document.querySelector(".save-btn");
+const h1ModalTitle = document.querySelector(".editor-title");
+
+function RenderNotes() {
+  ulElem.innerHTML = "";
+
+  notes.forEach(function (note, i) {
     const li = document.createElement("li");
     li.className = "note";
 
@@ -138,16 +130,17 @@ function RenderNotes(event) {
 
     const title = document.createElement("p");
     title.className = "li-header-title";
-    title.textContent = "برنامه تمرینی";
+    title.textContent = note.title;
 
     const tag = document.createElement("div");
     tag.className = "li-header-tag flex-center";
-    tag.textContent = "ورزش";
+    tag.textContent = note.tag.name;
+    tag.style.color = note.tag.color;
+    tag.style.backgroundColor = `${note.tag.color}4d`;
 
     const summary = document.createElement("p");
     summary.className = "li-summary";
-    summary.textContent =
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam vel, dignissimos saepe quibusdam quia facere cum natus quos vero fuga odio voluptatum obcaecati vitae officia.";
+    summary.textContent = note.content;
 
     const footer = document.createElement("div");
     footer.className = "li-footer flex-between";
@@ -157,33 +150,85 @@ function RenderNotes(event) {
 
     const circle = document.createElement("div");
     circle.className = "li-footer-circle";
+    circle.style.backgroundColor = note.tag.color;
 
     const date = document.createElement("div");
     date.className = "li-footer-date";
-    date.textContent = result;
+    date.textContent = note.date;
 
     const footerLeft = document.createElement("div");
     footerLeft.className = "li-footer-left flex-center gap-md";
 
     const pencil = document.createElement("div");
     pencil.className = "li-footer-pencil";
-    pencil.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>
-  `;
+    pencil.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>`;
 
     const trash = document.createElement("div");
     trash.className = "li-footer-trash";
-    trash.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash"><path d="M10 11v6"/><path d="M14 11v6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-  `;
+    trash.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash"><path d="M10 11v6"/><path d="M14 11v6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>`;
 
     header.append(title, tag);
-
     footerRight.append(circle, date);
-
     footerLeft.append(pencil, trash);
-
     footer.append(footerRight, footerLeft);
 
     li.append(header, summary, footer);
     ulElem.append(li);
+
+    pencil.addEventListener("click", function () {
+      editingNote = note;
+      inputModalCreate.value = note.title;
+      noteContent.textContent = note.content;
+
+      selectTag(note.tag);
+
+      modalCreate.classList.remove("hidden");
+      h1ModalTitle.textContent = "ویرایش یادداشت";
+    });
+
+    trash.addEventListener("click", function () {
+      notes.splice(i, 1);
+
+      li.remove();
+    });
   });
 }
+
+btnCreate.addEventListener("click", function () {
+  modalCreate.classList.remove("hidden");
+  h1ModalTitle.textContent = "ایجاد یادداشت";
+});
+
+CloseModalCreate.addEventListener("click", function () {
+  modalCreate.classList.add("hidden");
+});
+
+saveBtn.addEventListener("click", function () {
+  if (inputModalCreate.value.trim() === "") return;
+
+  if (editingNote) {
+    editingNote.title = inputModalCreate.value;
+    editingNote.content = noteContent.textContent;
+    editingNote.tag = selectedTag;
+
+    editingNote = null;
+  } else {
+    const note = {
+      title: inputModalCreate.value,
+      content: noteContent.textContent,
+      tag: selectedTag,
+      date: result,
+    };
+    notes.push(note);
+  }
+
+  RenderNotes();
+
+  inputModalCreate.value = "";
+  noteContent.textContent = "";
+  selectTag(tags[0]);
+
+  modalCreate.classList.add("hidden");
+});
+
+dateInfoTime.innerHTML = `ساعت ${timeResult}`;
