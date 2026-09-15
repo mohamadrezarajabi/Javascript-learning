@@ -1302,33 +1302,28 @@ body.loading {
 /* Tag menu */
 
 .tag-menu {
-  position: absolute;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: -22px;
+    height: 215px;
+    overflow: auto;
+    z-index: 100;
+    width: 160px;
+    padding: 8px;
+    border: 1px solid #1c3b4e;
+    border-radius: 14px;
+    background-color: #081721;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-5px);
+    transition: opacity 0.2s,
+    visibility 0.2s,
+    transform 0.2s;
+}
 
-  top: calc(100% + 10px);
-  right: 0;
-
-  z-index: 100;
-
-  width: 180px;
-
-  padding: 8px;
-
-  border: 1px solid #1c3b4e;
-  border-radius: 14px;
-
-  background: #081721;
-
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
-
-  opacity: 0;
-  visibility: hidden;
-
-  transform: translateY(-5px);
-
-  transition:
-    opacity 0.2s,
-    transform 0.2s,
-    visibility 0.2s;
+.tag-menu::-webkit-scrollbar{
+  background-color: transparent;
 }
 
 .tag-wrapper.open .tag-menu {
