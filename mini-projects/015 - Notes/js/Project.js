@@ -9,21 +9,25 @@ function Showloading() {
 
 /* ---------------- date -------------- */
 
-const now = new Date();
+function getCurrentDate() {
+  const now = new Date();
 
-const parts = new Intl.DateTimeFormat("fa-IR", {
-  calendar: "persian",
-  day: "numeric",
-  month: "long",
-  hour: "2-digit",
-  minute: "2-digit",
-  hourCycle: "h23",
-}).formatToParts(now);
+  const parts = new Intl.DateTimeFormat("fa-IR", {
+    calendar: "persian",
+    day: "numeric",
+    month: "long",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(now);
 
-const get = (type) => parts.find((p) => p.type === type)?.value;
+  const get = (type) => parts.find((p) => p.type === type)?.value;
 
-const result = `${get("day")} ${get("month")} ${get("hour")}:${get("minute")}`;
-const timeResult = `${get("hour")}:${get("minute")}`;
+  return {
+    date: `${get("day")} ${get("month")} ${get("hour")}:${get("minute")}`,
+    time: `${get("hour")}:${get("minute")}`,
+  };
+}
 
 /* ---------------------------------- */
 
@@ -48,8 +52,9 @@ inputSearch.addEventListener("blur", function () {
   inputSearch.value = "";
 });
 
-document.body.addEventListener("keyup", function (event) {
-  if (event.key === "k" && event.ctrlKey === true) {
+document.body.addEventListener("keydown", function (event) {
+  if (event.ctrlKey && event.key.toLowerCase() === "k") {
+    event.preventDefault();
     inputSearch.focus();
   }
 });
@@ -81,10 +86,16 @@ modalClose.addEventListener("click", function () {
   tagModal.classList.remove("show");
 });
 
+tagModal.addEventListener("click", function (event) {
+  if (event.target === tagModal) {
+    tagModal.classList.remove("show");
+  }
+});
+
 btnAddTag.addEventListener("click", function () {
   tagModal.classList.remove("show");
 
-  if (btnNewTagInput.value.trim() !== ""){
+  if (btnNewTagInput.value.trim() !== "") {
     tags.push({
       name: btnNewTagInput.value,
       color: btnNewTagColor.value,
@@ -125,25 +136,25 @@ function RenderTags() {
   tagMenu.innerHTML = "";
   ulTagsList.innerHTML = "";
 
-  tags.forEach(function (tag,i) {
+  tags.forEach(function (tag, i) {
     const liTagList = document.createElement("li");
     const deleteTag = document.createElement("button");
 
-    liTagList.className = "liTagList flex-center"
+    liTagList.className = "liTagList flex-center";
     liTagList.textContent = tag.name;
     liTagList.style.backgroundColor = `${tag.color}40`;
     liTagList.style.color = tag.color;
     liTagList.style.border = `1px solid ${tag.color}`;
 
-    deleteTag.className = "deleteTag"
-    deleteTag.textContent = "×"
-    deleteTag.type = "button"
+    deleteTag.className = "deleteTag";
+    deleteTag.textContent = "×";
+    deleteTag.type = "button";
 
     deleteTag.addEventListener("click", function () {
-      tags.splice(i,1);
+      tags.splice(i, 1);
 
-      liTagList.remove()
-    })
+      RenderTags();
+    });
 
     const option = document.createElement("button");
     option.className = "tag-option";
@@ -168,7 +179,7 @@ function RenderTags() {
   });
 }
 
-RenderTags()
+RenderTags();
 
 selectTag(tags[0]);
 
@@ -179,7 +190,7 @@ let editingNote = null;
 const btnCreate = document.querySelector(".create-tasks");
 const modalCreate = document.querySelector(".editor");
 const CloseModalCreate = document.querySelector(".back-btn");
-const dateInfoTime = document.querySelector(".date-info");
+const dateInfoTime = document.querySelector(".date-info .time");
 const inputModalCreate = document.querySelector(".note-title");
 const noteContent = document.querySelector(".note-content");
 const saveBtn = document.querySelector(".save-btn");
@@ -262,12 +273,18 @@ function RenderNotes() {
 }
 
 btnCreate.addEventListener("click", function () {
+  editingNote = null;
+
+  inputModalCreate.value = "";
+  noteContent.textContent = "";
+
   modalCreate.classList.remove("hidden");
   h1ModalTitle.textContent = "ایجاد یادداشت";
 });
 
 CloseModalCreate.addEventListener("click", function () {
   modalCreate.classList.add("hidden");
+  editingNote = null;
 });
 
 saveBtn.addEventListener("click", function () {
@@ -277,6 +294,7 @@ saveBtn.addEventListener("click", function () {
     editingNote.title = inputModalCreate.value;
     editingNote.content = noteContent.textContent;
     editingNote.tag = selectedTag;
+    editingNote.date = getCurrentDate().date;
 
     editingNote = null;
   } else {
@@ -284,8 +302,9 @@ saveBtn.addEventListener("click", function () {
       title: inputModalCreate.value,
       content: noteContent.textContent,
       tag: selectedTag,
-      date: result,
+      date: getCurrentDate().date,
     };
+
     notes.push(note);
   }
 
@@ -298,4 +317,12 @@ saveBtn.addEventListener("click", function () {
   modalCreate.classList.add("hidden");
 });
 
-dateInfoTime.innerHTML = `ساعت ${timeResult}`;
+function updateDateInfo() {
+  const currentDate = getCurrentDate();
+
+  dateInfoTime.textContent = `ساعت ${currentDate.time}`;
+}
+
+updateDateInfo();
+
+setInterval(updateDateInfo, 1000);

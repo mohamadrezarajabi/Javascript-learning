@@ -437,11 +437,6 @@
   font-family: var(--font-family);
 }
 
-html,
-body {
-  min-height: 100%;
-}
-
 body {
   min-height: 100vh;
   display: flex;
@@ -453,12 +448,11 @@ body {
 
 /* -------------------- footer ------------ */
 
-.wrap {
-  flex: 1;
+.mr-signature {
+  margin-top: 2rem;
 }
 
 .mr-signature {
-  /* fixed: merged with the second .mr-signature block below (it duplicated this selector and immediately overrode margin-top with 0.5rem), keeping just one source of truth */
   --mr-size: 0.8125rem;
   --mr-badge: 1.5rem;
 
@@ -499,7 +493,6 @@ body {
   flex: none;
   width: 1.8rem;
   height: 1.3rem;
-  object-fit: contain; /* fixed: without this the logo image would stretch/squish to fill the non-square 1.8rem x 1.3rem box instead of keeping its own ratio */
   display: grid;
   place-items: center;
   letter-spacing: 0.02em;
@@ -677,6 +670,9 @@ body.loading {
 /* -------------- Body ------------------- */
 
 .container {
+  flex: 1;
+  width: 96%;
+  margin: 0 auto;
   padding-top: var(--padding-xs);
 }
 
@@ -1301,28 +1297,7 @@ body.loading {
 
 /* Tag menu */
 
-.tag-menu {
-    position: absolute;
-    top: calc(100% + 10px);
-    right: -22px;
-    height: 215px;
-    overflow: auto;
-    z-index: 100;
-    width: 160px;
-    padding: 8px;
-    border: 1px solid #1c3b4e;
-    border-radius: 14px;
-    background-color: #081721;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-5px);
-    transition: opacity 0.2s,
-    visibility 0.2s,
-    transform 0.2s;
-}
-
-.tag-menu::-webkit-scrollbar{
+.tag-menu::-webkit-scrollbar {
   background-color: transparent;
 }
 
@@ -1606,28 +1581,20 @@ body.loading {
 
 .tag-menu {
   position: absolute;
-
   top: calc(100% + 10px);
-  right: 0;
-
+  right: -7px;
+  max-height: 215px;
+  overflow: auto;
   z-index: 100;
-
-  width: 190px;
-
+  width: 160px;
   padding: 8px;
-
   border: 1px solid #1c3b4e;
   border-radius: 14px;
-
   background-color: #081721;
-
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
-
   opacity: 0;
   visibility: hidden;
-
   transform: translateY(-5px);
-
   transition:
     opacity 0.2s,
     visibility 0.2s,

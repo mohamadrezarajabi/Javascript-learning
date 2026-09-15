@@ -22,7 +22,7 @@
     <div class="container w-full m-auto">
       <!-- ------------ Editor ------------- -->
 
-      <div class="editor hidden p-xl m-lg">
+      <div class="editor hidden p-xl">
         <!-- Header -->
 
         <header class="editor-header flex">
@@ -51,10 +51,7 @@
             <!-- Tag selector -->
 
             <div class="tag-wrapper relative">
-              <button
-                class="tag-btn flex-center gap-md"
-                type="button"
-              >
+              <button class="tag-btn flex-center gap-md" type="button">
                 <span class="tag-name"> برنامه‌نویسی </span>
 
                 <span class="tag-arrow">
@@ -106,17 +103,39 @@
 
           <!-- Content -->
 
-          <div class="note-content" contenteditable="true" spellcheck="false"></div>
+          <div
+            class="note-content"
+            contenteditable="true"
+            spellcheck="false"
+          ></div>
 
           <!-- Footer -->
 
-          <footer class="note-footer">
+          <div class="note-footer">
             <div class="date-info">
-              <span> امروز ۱۲:۴۳ </span>
+              <span class="time"> امروز ۱۲:۴۳ </span>
 
-              <span class="calendar-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg></span>
+              <span class="calendar-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-calendar"
+                >
+                  <path d="M8 2v3" />
+                  <path d="M16 2v3" />
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <path d="M3 9h18" />
+                </svg>
+              </span>
             </div>
-          </footer>
+          </div>
         </main>
       </div>
 
@@ -172,30 +191,45 @@
       <div class="container-hr"></div>
 
       <main class="main">
-
         <div class="main-header flex-between">
-
           <div class="main-header__brand flex align-center gap-sm">
             <span class="main-header__icon flex-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-file-text"
+              >
+                <path
+                  d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"
+                />
+                <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+                <path d="M10 9H8" />
+                <path d="M16 13H8" />
+                <path d="M16 17H8" />
+              </svg>
             </span>
 
             <div class="main-header__texts flex-column">
               <p class="main-header__title">یادداشت‌های من</p>
-              <p class="main-header__subtitle">یادداشت‌ها و ایده‌های خودت رو اینجا مدیریت کن</p>
+              <p class="main-header__subtitle">
+                یادداشت‌ها و ایده‌های خودت رو اینجا مدیریت کن
+              </p>
             </div>
           </div>
 
           <div class="main-header__right">
-            <button class="create-tags">
-              ایجاد تگ
-            </button>
+            <button class="create-tags">ایجاد تگ</button>
           </div>
 
           <div class="main-header__left gap-sm flex-center">
-
             <div class="view-toggle">
-
               <!-- Grid -->
               <button class="view-toggle-btn grid-btn active" type="button">
                 <svg
@@ -237,7 +271,6 @@
                   <line x1="3" y1="18" x2="3.01" y2="18" />
                 </svg>
               </button>
-
             </div>
 
             <button class="create-tasks flex-center gap-xs">
@@ -258,9 +291,7 @@
 
               <span>یادداشت جدید</span>
             </button>
-
           </div>
-
         </div>
 
         <section class="card-notes">
@@ -270,16 +301,12 @@
     </div>
 
     <!-- ------------ Tag Modal ------------- -->
-
     <div class="modal-overlay" id="tagModal">
       <div class="tag-modal">
         <div class="modal-header">
           <h2>مدیریت تگ‌ها</h2>
-
           <button class="modal-close" type="button">×</button>
         </div>
-
-        <!-- Add Tag -->
 
         <div class="add-tag">
           <input
@@ -289,71 +316,60 @@
             required
             maxlength="12"
           />
-
           <input class="new-tag-color" type="color" value="#8b5cf6" />
-
           <button class="add-tag-btn" type="button">افزودن</button>
         </div>
-
-        <!-- Tags -->
 
         <ul class="tags-list"></ul>
       </div>
     </div>
 
     <!-- Loader -->
-
     <div class="loader">
-      <!-- From Uiverse.io by alexruix -->
-
       <div class="container-loader">
         <div class="loader-shadow"></div>
       </div>
     </div>
-    <div class="modal-overlay" id="tagModal">
 
-  <div class="tag-modal">
+    <!-- MR Signature Footer -->
+    <footer class="mr-signature" dir="ltr" lang="en">
+      <div class="mr-signature__identity">
+        <img
+          src="./images/Logo.webp"
+          alt="logo"
+          class="mr-signature__badge"
+          aria-hidden="true"
+        />
+        <span class="mr-signature__text">
+          <span class="mr-signature__name">Mohamad Reza Rajabi</span>
+          <span class="mr-signature__role">— design &amp; development</span>
+        </span>
+      </div>
+      <div class="mr-signature__links">
+        <span class="mr-signature__year">© <span data-year></span></span>
+        <a
+          href="https://github.com/mohamadrezarajabi"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub profile"
+        >
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
+            />
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+      <script>
+        document
+          .querySelectorAll(".mr-signature [data-year]")
+          .forEach(function (el) {
+            el.textContent = new Date().getFullYear();
+          });
+      </script>
+    </footer>
 
-    <div class="modal-header">
-
-      <h2>مدیریت تگ‌ها</h2>
-
-      <button
-        class="modal-close"
-        type="button"
-      >
-        ×
-      </button>
-
-    </div>
-
-
-    <!-- Add tag -->
-
-    <div class="add-tag">
-
-      <input
-        class="new-tag-input"
-        type="text"
-        placeholder="نام تگ جدید..."
-      >
-
-      <input
-        class="new-tag-color"
-        type="color"
-        value="#8b5cf6"
-      >
-
-      <button
-        class="add-tag-btn"
-        type="button"
-      >
-        افزودن
-      </button>
-
-    </div>
-
-  </div>
     <script src="js/Project.js"></script>
   </body>
 </html>
