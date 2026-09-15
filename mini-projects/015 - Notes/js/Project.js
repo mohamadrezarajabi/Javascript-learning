@@ -30,11 +30,11 @@ const timeResult = `${get("hour")}:${get("minute")}`;
 let notes = [];
 
 const tags = [
-  { name: "برنامه‌نویسی", color: "#8a5cf6", className: "tag-purple" },
-  { name: "ورزش", color: "#10b981", className: "tag-green" },
-  { name: "درس", color: "#3b82f6", className: "tag-blue" },
-  { name: "کار", color: "#f59e0b", className: "tag-orange" },
-  { name: "شخصی", color: "#ec4899", className: "tag-pink" },
+  { name: "برنامه‌نویسی", color: "#8a5cf6" },
+  { name: "ورزش", color: "#10b981" },
+  { name: "درس", color: "#3b82f6" },
+  { name: "کار", color: "#f59e0b" },
+  { name: "شخصی", color: "#ec4899" },
 ];
 
 let selectedTag = tags[0];
@@ -55,53 +55,120 @@ document.body.addEventListener("keyup", function (event) {
 });
 
 /* --------------------------- */
-
 const tagWrapper = document.querySelector(".tag-wrapper");
 const tagBtn = document.querySelector(".tag-btn");
 const tagName = document.querySelector(".tag-name");
 const tagMenu = document.querySelector(".tag-menu");
+const viewToggleBtns = document.querySelectorAll(".view-toggle-btn");
+const notesList = document.querySelector(".notes");
+const btnCreateTags = document.querySelector(".create-tags");
+const tagModal = document.querySelector("#tagModal");
+const modalClose = document.querySelector(".modal-close");
+const btnAddTag = document.querySelector(".add-tag-btn");
+const btnNewTagColor = document.querySelector(".new-tag-color");
+const btnNewTagInput = document.querySelector(".new-tag-input");
+const ulTagsList = document.querySelector(".tags-list");
 
 tagBtn.addEventListener("click", function () {
   tagWrapper.classList.toggle("open");
+});
+
+btnCreateTags.addEventListener("click", function () {
+  tagModal.classList.add("show");
+});
+
+modalClose.addEventListener("click", function () {
+  tagModal.classList.remove("show");
+});
+
+btnAddTag.addEventListener("click", function () {
+  tagModal.classList.remove("show");
+
+  if (btnNewTagInput.value.trim() !== ""){
+    tags.push({
+      name: btnNewTagInput.value,
+      color: btnNewTagColor.value,
+    });
+  }
+
+  RenderTags();
+});
+
+viewToggleBtns.forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    viewToggleBtns.forEach(function (item) {
+      item.classList.remove("active");
+    });
+
+    btn.classList.add("active");
+
+    if (btn.classList.contains("list-btn")) {
+      notesList.classList.add("notes--list");
+    } else {
+      notesList.classList.remove("notes--list");
+    }
+  });
 });
 
 function selectTag(tag) {
   selectedTag = tag;
 
   tagName.textContent = tag.name;
-
-  tagBtn.classList.remove(
-    "tag-purple",
-    "tag-green",
-    "tag-blue",
-    "tag-orange",
-    "tag-pink",
-  );
-
-  tagBtn.classList.add(tag.className);
+  tagName.style.color = tag.color;
+  tagBtn.style.backgroundColor = `${tag.color}40`;
+  tagBtn.style.border = `1px solid ${tag.color}`;
 
   tagWrapper.classList.remove("open");
 }
 
-tags.forEach(function (tag) {
-  const option = document.createElement("button");
-  option.className = "tag-option";
-  option.type = "button";
+function RenderTags() {
+  tagMenu.innerHTML = "";
+  ulTagsList.innerHTML = "";
 
-  const color = document.createElement("span");
-  color.className = `tag-color tag-color-${tag.className.replace("tag-", "")}`;
+  tags.forEach(function (tag,i) {
+    const liTagList = document.createElement("li");
+    const deleteTag = document.createElement("button");
 
-  const name = document.createElement("span");
-  name.textContent = tag.name;
+    liTagList.className = "liTagList flex-center"
+    liTagList.textContent = tag.name;
+    liTagList.style.backgroundColor = `${tag.color}40`;
+    liTagList.style.color = tag.color;
+    liTagList.style.border = `1px solid ${tag.color}`;
 
-  option.append(color, name);
+    deleteTag.className = "deleteTag"
+    deleteTag.textContent = "×"
+    deleteTag.type = "button"
 
-  option.addEventListener("click", function () {
-    selectTag(tag);
+    deleteTag.addEventListener("click", function () {
+      tags.splice(i,1);
+
+      liTagList.remove()
+    })
+
+    const option = document.createElement("button");
+    option.className = "tag-option";
+    option.type = "button";
+
+    const color = document.createElement("span");
+    color.className = "tag-color";
+    color.style.backgroundColor = tag.color;
+
+    const name = document.createElement("span");
+    name.textContent = tag.name;
+
+    option.append(color, name);
+
+    option.addEventListener("click", function () {
+      selectTag(tag);
+    });
+
+    tagMenu.append(option);
+    liTagList.append(deleteTag);
+    ulTagsList.append(liTagList);
   });
+}
 
-  tagMenu.append(option);
-});
+RenderTags()
 
 selectTag(tags[0]);
 
