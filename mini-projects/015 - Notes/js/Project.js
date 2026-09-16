@@ -46,11 +46,36 @@ let selectedTag = tags[0];
 // -------------------------
 
 const inputSearch = document.querySelector(".header-search-input");
+const SearchIcon = document.querySelector(".header-search-icon__search");
+const SearchKbd = document.querySelector(".header-search-kbd")
 const ulElem = document.querySelector(".notes");
 
-inputSearch.addEventListener("blur", function () {
-  inputSearch.value = "";
-});
+const mobileQuery = window.matchMedia("(max-width: 520px)");
+
+function updateSearchPlaceholder(e) {
+  inputSearch.placeholder = e.matches ? "جستجو..." : "";
+}
+
+updateSearchPlaceholder(mobileQuery);
+mobileQuery.addEventListener("change", updateSearchPlaceholder);
+
+
+function filterSearch() {
+  const query = inputSearch.value.trim().toLowerCase();
+
+  SearchKbd.classList.toggle("visibility", query !== "");
+
+  const searchNotes = notes.filter(function (note) {
+    return (
+      note.title.toLowerCase().includes(query) ||
+      note.content.toLowerCase().includes(query)
+    );
+  });
+
+  RenderNotes(searchNotes);
+};
+
+inputSearch.addEventListener("input", filterSearch);
 
 document.body.addEventListener("keydown", function (event) {
   if (event.ctrlKey && event.key.toLowerCase() === "k") {
@@ -136,7 +161,7 @@ function RenderTags() {
   tagMenu.innerHTML = "";
   ulTagsList.innerHTML = "";
 
-  tags.forEach(function (tag, i) {
+  tags.forEach(function (tag,i) {
     const liTagList = document.createElement("li");
     const deleteTag = document.createElement("button");
 
@@ -196,10 +221,18 @@ const noteContent = document.querySelector(".note-content");
 const saveBtn = document.querySelector(".save-btn");
 const h1ModalTitle = document.querySelector(".editor-title");
 
-function RenderNotes() {
+
+function RenderNotes(noteFilter=notes) {
   ulElem.innerHTML = "";
 
-  notes.forEach(function (note, i) {
+  const notesEmpty = document.querySelector(".notes-empty")
+  if(notes.length === 0){
+    notesEmpty.classList.remove("hidden");
+  } else {
+    notesEmpty.classList.add("hidden")
+  }
+
+  noteFilter.forEach(function (note) {
     const li = document.createElement("li");
     li.className = "note";
 
@@ -260,14 +293,17 @@ function RenderNotes() {
 
       selectTag(note.tag);
 
-      modalCreate.classList.remove("hidden");
+      modalCreate.classList.add("show");
       h1ModalTitle.textContent = "ویرایش یادداشت";
     });
 
     trash.addEventListener("click", function () {
-      notes.splice(i, 1);
+      const index = notes.indexOf(note);
+      if (index !== -1){
+        notes.splice(index, 1);
+      }
 
-      li.remove();
+      RenderNotes();
     });
   });
 }
@@ -278,14 +314,30 @@ btnCreate.addEventListener("click", function () {
   inputModalCreate.value = "";
   noteContent.textContent = "";
 
-  modalCreate.classList.remove("hidden");
+  modalCreate.classList.add("show");
   h1ModalTitle.textContent = "ایجاد یادداشت";
 });
 
+modalCreate.addEventListener("keydown", function (event) {
+  if (event.key === "Enter"){
+    event.preventDefault()
+    saveBtn.click()
+  }
+})
+
+tagModal.addEventListener("keydown", function (event) {
+  if (event.key === "Enter"){
+    event.preventDefault()
+    btnAddTag.click()
+  }
+})
+
 CloseModalCreate.addEventListener("click", function () {
-  modalCreate.classList.add("hidden");
+  modalCreate.classList.remove("show");
   editingNote = null;
 });
+
+
 
 saveBtn.addEventListener("click", function () {
   if (inputModalCreate.value.trim() === "") return;
@@ -314,7 +366,7 @@ saveBtn.addEventListener("click", function () {
   noteContent.textContent = "";
   selectTag(tags[0]);
 
-  modalCreate.classList.add("hidden");
+  modalCreate.classList.remove("show");
 });
 
 function updateDateInfo() {

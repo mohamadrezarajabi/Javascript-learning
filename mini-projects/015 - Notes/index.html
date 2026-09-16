@@ -22,7 +22,7 @@
     <div class="container w-full m-auto">
       <!-- ------------ Editor ------------- -->
 
-      <div class="editor hidden p-xl">
+      <div class="editor p-xl">
         <!-- Header -->
 
         <header class="editor-header flex">
@@ -185,7 +185,7 @@
           </kbd>
         </div>
 
-        <div class="header-login">Login</div>
+        <a href="../009 - Form Login 2/index.html"><div class="header-login">Login</div></a>
       </header>
 
       <div class="container-hr"></div>
@@ -292,6 +292,319 @@
               <span>یادداشت جدید</span>
             </button>
           </div>
+        </div>
+
+        <!-- empty -->
+        <div class="notes-empty flex">
+          <div class="add-document">
+            <svg
+              width="250"
+              height="150"
+              viewBox="0 0 1170 756"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+
+
+                <!-- Very subtle blue -->
+                <linearGradient
+                  id="documentStroke"
+                  x1="420"
+                  y1="220"
+                  x2="735"
+                  y2="650"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop offset="0" stop-color="#477C9D" stop-opacity=".78" />
+                  <stop offset=".45" stop-color="#356982" stop-opacity=".62" />
+                  <stop offset="1" stop-color="#28556D" stop-opacity=".48" />
+                </linearGradient>
+
+                <!-- Text lines -->
+                <linearGradient
+                  id="textStroke"
+                  x1="470"
+                  y1="320"
+                  x2="665"
+                  y2="510"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop offset="0" stop-color="#4C87AA" stop-opacity=".72" />
+                  <stop offset="1" stop-color="#326A88" stop-opacity=".50" />
+                </linearGradient>
+
+                <!-- Muted cyan -->
+                <linearGradient
+                  id="cyan"
+                  x1="670"
+                  y1="520"
+                  x2="775"
+                  y2="640"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop offset="0" stop-color="#18C7C4" />
+                  <stop offset="1" stop-color="#0AA9AA" />
+                </linearGradient>
+
+                <!-- Soft document glow -->
+                <filter
+                  id="documentGlow"
+                  x="-80%"
+                  y="-80%"
+                  width="260%"
+                  height="260%"
+                >
+                  <feGaussianBlur
+                    in="SourceGraphic"
+                    stdDeviation="4"
+                    result="blur"
+                  />
+
+                  <feColorMatrix
+                    in="blur"
+                    type="matrix"
+                    values="
+        0 0 0 0 0.05
+        0 0 0 0 0.32
+        0 0 0 0 0.48
+        0 0 0 .34 0"
+                    result="glow"
+                  />
+
+                  <feMerge>
+                    <feMergeNode in="glow" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+
+                <!-- Soft text glow -->
+                <filter
+                  id="textGlow"
+                  x="-60%"
+                  y="-100%"
+                  width="220%"
+                  height="300%"
+                >
+                  <feGaussianBlur
+                    in="SourceGraphic"
+                    stdDeviation="3.5"
+                    result="blur"
+                  />
+
+                  <feColorMatrix
+                    in="blur"
+                    type="matrix"
+                    values="
+        0 0 0 0 0.05
+        0 0 0 0 0.30
+        0 0 0 0 0.45
+        0 0 0 .30 0"
+                  />
+                </filter>
+
+                <!-- Soft cyan glow -->
+                <filter
+                  id="cyanGlow"
+                  x="-100%"
+                  y="-100%"
+                  width="300%"
+                  height="300%"
+                >
+                  <feGaussianBlur
+                    in="SourceGraphic"
+                    stdDeviation="8"
+                    result="blur"
+                  />
+
+                  <feColorMatrix
+                    in="blur"
+                    type="matrix"
+                    values="
+        0 0 0 0 0
+        0 0 0 0 .65
+        0 0 0 0 .63
+        0 0 0 .42 0"
+                  />
+
+                  <feMerge>
+                    <feMergeNode />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+
+              <!-- Very faint atmospheric glow behind icon -->
+
+              <ellipse
+                cx="585"
+                cy="425"
+                rx="270"
+                ry="275"
+                fill="#0B202D"
+                opacity=".12"
+              />
+
+              <!-- DOCUMENT -->
+
+              <!-- Soft glow behind border -->
+              <path
+                d="
+    M454 226
+    H644
+    L719 302
+    V619
+    C719 632 711 640 698 640
+    H440
+    C425 640 416 631 416 616
+    V252
+    C416 237 426 226 441 226
+    Z"
+                stroke="#39728F"
+                stroke-width="10"
+                opacity=".13"
+                filter="url(#documentGlow)"
+              />
+
+              <!-- Main document border -->
+              <path
+                d="
+    M454 226
+    H644
+    L719 302
+    V619
+    C719 632 711 640 698 640
+    H440
+    C425 640 416 631 416 616
+    V252
+    C416 237 426 226 441 226
+    Z"
+                stroke="url(#documentStroke)"
+                stroke-width="6"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                opacity=".76"
+              />
+
+              <!-- Folded corner -->
+
+              <path
+                d="
+    M645 228
+    V285
+    C645 301 654 310 670 310
+    H718"
+                stroke="url(#documentStroke)"
+                stroke-width="6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                opacity=".72"
+              />
+
+              <path
+                d="M646 229 L718 302"
+                stroke="#477A94"
+                stroke-width="5"
+                stroke-linecap="round"
+                opacity=".62"
+              />
+
+              <!-- DOCUMENT TEXT -->
+
+              <!-- subtle glow -->
+              <g
+                stroke="#3D7796"
+                stroke-width="12"
+                stroke-linecap="round"
+                opacity=".12"
+                filter="url(#textGlow)"
+              >
+                <path d="M473 330 H597" />
+                <path d="M473 401 H664" />
+                <path d="M473 456 H664" />
+                <path d="M473 510 H596" />
+              </g>
+
+              <!-- actual lines -->
+              <g
+                stroke="url(#textStroke)"
+                stroke-width="7"
+                stroke-linecap="round"
+                opacity=".72"
+              >
+                <path d="M473 330 H597" />
+                <path d="M473 401 H664" />
+                <path d="M473 456 H664" />
+                <path d="M473 510 H596" />
+              </g>
+
+              <!-- LEFT DECORATIVE LINES -->
+
+              <g
+                stroke="#14B9B5"
+                stroke-width="5"
+                stroke-linecap="round"
+                opacity=".62"
+                filter="url(#cyanGlow)"
+              >
+                <path d="M278 535 L313 545" />
+                <path d="M280 588 L313 578" />
+                <path d="M319 620 L332 596" />
+              </g>
+
+              <!-- TOP RIGHT DECORATIVE LINES -->
+
+              <g
+                stroke="#16BCB8"
+                stroke-width="6"
+                stroke-linecap="round"
+                opacity=".66"
+                filter="url(#cyanGlow)"
+              >
+                <path d="M764 181 L771 136" />
+                <path d="M799 217 L843 176" />
+                <path d="M820 262 L875 260" />
+              </g>
+
+              <!-- PLUS CIRCLE -->
+
+              <!-- faint outer glow -->
+              <circle
+                cx="720"
+                cy="577"
+                r="73"
+                fill="#08B9B7"
+                opacity=".10"
+                filter="url(#cyanGlow)"
+              />
+
+              <!-- circle -->
+              <circle
+                cx="720"
+                cy="577"
+                r="67"
+                fill="url(#cyan)"
+                opacity=".92"
+              />
+
+              <!-- slight inner softness -->
+              <circle cx="720" cy="577" r="64" fill="#11BDBA" opacity=".25" />
+
+              <!-- PLUS -->
+
+              <g
+                stroke="#062027"
+                stroke-width="9"
+                stroke-linecap="round"
+                opacity=".95"
+              >
+                <path d="M720 549 V605" />
+                <path d="M692 577 H748" />
+              </g>
+            </svg>
+          </div>
+          <h3 class="notes-empty-h3">هنوز یادداشتی وجود ندارد</h3>
+          <p class="notes-empty-p">با کلیک روی دکمه یادداشت جدید,اولین یادداشت خود را بسازید و شروع به سازمان دهی ایده های خود کنید</p>
         </div>
 
         <section class="card-notes">
