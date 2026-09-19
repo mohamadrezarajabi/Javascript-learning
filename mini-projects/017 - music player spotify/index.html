@@ -1,0 +1,140 @@
+<!doctype html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>015</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body class="loading" onload="Showloading()">
+    <div class="container">
+      <header class="header">
+        <div class="header-img">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            viewBox="0 0 512 512"
+          >
+            <!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+            <path
+              fill="rgb(23, 61, 101)"
+              d="M256 8a248 248 0 1 0 0 496 248 248 0 1 0 0-496zM356.7 372.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"
+            />
+          </svg>
+        </div>
+        <h3 class="header-title">Music Player</h3>
+      </header>
+
+      <audio
+        src="https://dl.musicdel.ir/Music/1400/05/the_weeknd_blinding_lights%20128.mp3"
+        class="audio"
+      ></audio>
+      <main class="main">
+        <div class="card">
+          <div class="card-img">
+            <img
+              src="https://i.scdn.co/image/ab67616d00001e028863bc11d2aa12b54f5aeb36"
+              alt=""
+            />
+          </div>
+          <div class="name-track">Blinding Lights</div>
+          <div class="name-artist">The Weekend</div>
+          <div class="timeline">
+            <input
+              type="range"
+              name=""
+              id="card-timeline"
+              min="0"
+              value="0"
+              step="0.1"
+            />
+            <div class="time">
+              <p class="all-time">3:20</p>
+              <p class="time-now">0:00</p>
+            </div>
+          </div>
+          <div class="buttons">
+            <button type="button" class="btn heart">
+              <img src="./images/heart-regular.webp" alt="" />
+            </button>
+            <button type="button" class="btn backward">
+              <img src="./images/backward-step-solid.webp" alt="" />
+            </button>
+            <button type="button" class="btn play">
+              <img src="./images/play-solid.webp" alt="" />
+            </button>
+            <button type="button" class="btn forward">
+              <img src="./images/forward-step-solid.webp" alt="" />
+            </button>
+            <button type="button" class="btn qauge" title="Playback speed">
+              <img src="./images/gauge-high-solid.webp" alt="" />
+              <span class="speed-badge">1x</span>
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Loader -->
+    <div class="loader">
+      <div class="container-loader">
+        <div class="loader-shadow"></div>
+      </div>
+    </div>
+
+    <!-- MR Signature Footer -->
+    <footer class="mr-signature" dir="ltr" lang="en">
+      <div class="mr-signature__identity">
+        <img
+          src="./images/Logo.webp"
+          alt="logo"
+          class="mr-signature__badge"
+          aria-hidden="true"
+        />
+        <span class="mr-signature__text">
+          <span class="mr-signature__name">Mohamad Reza Rajabi</span>
+          <span class="mr-signature__role">— design &amp; development</span>
+        </span>
+      </div>
+      <div class="mr-signature__links">
+        <span class="mr-signature__year">© <span data-year></span></span>
+        <a
+          href="https://github.com/mohamadrezarajabi"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub profile"
+        >
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
+            />
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+      <script>
+        document
+          .querySelectorAll(".mr-signature [data-year]")
+          .forEach(function (el) {
+            el.textContent = new Date().getFullYear();
+          });
+      </script>
+    </footer>
+
+    <script src="js/Project.js"></script>
+  </body>
+</html>
