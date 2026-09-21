@@ -46,7 +46,7 @@ document.querySelector("#pauseBtn").addEventListener("click", pause);
 document.querySelector("#speedBtn").addEventListener("click", speedTo3X);
 
 /*
- * !NOTE: music.duration is NaN until the browser finishes reading the file's metadata
+ !NOTE: music.duration is NaN until the browser finishes reading the file's metadata
  * that's why we read it inside the "loadedmetadata" event, not immediately on page load
  * playbackRate only changes SPEED, it does NOT change pitch by default in most browsers
  */
