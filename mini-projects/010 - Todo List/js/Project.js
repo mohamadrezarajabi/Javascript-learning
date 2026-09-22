@@ -75,7 +75,7 @@ function renderTodos() {
               <h3 class="todo-title">${todo.title}</h3>
               ${descriptionHTML}
             </div>
-            <input class="todo-input" type="checkbox">
+            <input class="todo-input" type="checkbox" ${todo.completed ? "checked" : ""}>
           </div>
         </div>
       </li>`,
