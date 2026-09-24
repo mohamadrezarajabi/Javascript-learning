@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>018</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/style/common.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="loading" onload="Showloading()">
+    <div class="container">
+      <header class="header">
+        <div class="header-right">
+          <div class="img-svg">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="26"
+              height="26"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-sun preview-icon"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2" />
+              <path d="M12 20v2" />
+              <path d="m4.93 4.93 1.41 1.41" />
+              <path d="m17.66 17.66 1.41 1.41" />
+              <path d="M2 12h2" />
+              <path d="M20 12h2" />
+              <path d="m6.34 17.66-1.41 1.41" />
+              <path d="m19.07 4.93-1.41 1.41" />
+            </svg>
+          </div>
+          <p class="title-header">روز بخیر!</p>
+        </div>
+        <div class="header-left">
+          <img src="./images/Logo.webp" width="50" alt="" />
+        </div>
+      </header>
+      <main class="main">
+        <div class="header-main">
+          <div class="chevron-right">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="27"
+              height="27"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-chevron-right preview-icon"
+            >
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </div>
+          <h2 class="header-main__title">موزیک های برتر</h2>
+        </div>
+        <section class="cards-main">
+          <audio class="audio" src=""></audio>
+          <ul class="item-cards"></ul>
+        </section>
+        <div class="menu-play">
+          <div class="volume">
+            <input
+              class="range volume-range"
+              type="range"
+              min="0"
+              max="1"
+              value="0"
+              aria-label="صدا"
+            />
+            <img class="volume-on" src="./images/volume-2.webp" alt="" />
+          </div>
+
+          <div class="timeLine">
+            <div class="control">
+              <button class="btn-back btn-control" type="button">
+                <img
+                  width="20"
+                  class="img-back"
+                  src="./images/backward-step-solid.webp"
+                  alt=""
+                />
+              </button>
+              <button class="btn-play btn-control" type="button">
+                <img
+                  width="25"
+                  class="img-play"
+                  src="images/play-solid.webp"
+                  alt=""
+                />
+              </button>
+              <button class="btn-forward btn-control" type="button">
+                <img
+                  width="20"
+                  class="img-forward"
+                  src="./images/forward-step-solid.webp"
+                  alt=""
+                />
+              </button>
+            </div>
+            <div class="progress">
+              <div class="time-row">
+                <span class="time-current">0:00</span>
+                <span class="time-total">0:00</span>
+              </div>
+              <input
+                class="range"
+                type="range"
+                id="timeline-range"
+                min="0"
+                max="100"
+                value="0"
+                aria-label="نوار پخش"
+              />
+            </div>
+          </div>
+          <div class="menu-left">
+            <img src="" class="menu-img" width="58" alt="" />
+            <div class="text-menu__left">
+              <p class="title-card_menu"></p>
+              <p class="subtitle-card_menu"></p>
+            </div>
+            <div class="like">
+              <img
+                class="img-like"
+                width="20"
+                src="./images/heart-regular.webp"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <div class="loader">
+      <!-- From Uiverse.io by alexruix -->
+      <div class="container-loader">
+        <div class="loader-shadow"></div>
+      </div>
+    </div>
+
+    <script src="js/Project.js"></script>
+  </body>
+</html>
