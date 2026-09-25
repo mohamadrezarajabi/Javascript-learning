@@ -8,7 +8,26 @@ function Showloading() {
 /* -------------------- loader ---------------- */
 
 const ulElem = document.querySelector(".item-cards");
+const titleCardMenu = document.querySelector(".title-card_menu");
+const subtitleCardMenu = document.querySelector(".subtitle-card_menu");
+const imgMenu = document.querySelector(".menu-img");
 const audio = document.querySelector(".audio");
+const btnMenuPlay = document.querySelector(".btn-play");
+const btnMenuPlayImg = document.querySelector(".btn-play img");
+const btnBack = document.querySelector(".btn-back");
+const btnForward = document.querySelector(".btn-forward");
+const timeCurrent = document.querySelector(".time-current");
+const timeTotal = document.querySelector(".time-total");
+const timelineRange = document.querySelector("#timeline-range");
+const volume = document.querySelector(".volume-on");
+const volumeRange = document.querySelector(".volume-range");
+const like = document.querySelector(".img-like");
+
+let playstatus = false;
+let volumestatus = true;
+let likestatus = false;
+
+let currentSong = null;
 
 const songs = [
   {
@@ -49,7 +68,19 @@ const songs = [
   },
 ];
 
-songs.forEach(function (song) {
+function backImg() {
+  document.querySelector(".menu-img").style.display = "block";
+  document.querySelector(".text-menu__left").style.display = "block";
+}
+
+function menu(song) {
+  audio.src = song.src;
+  imgMenu.src = song.img;
+  titleCardMenu.textContent = song.name;
+  subtitleCardMenu.textContent = song.artist;
+}
+
+songs.forEach(function (song, index) {
   ulElem.insertAdjacentHTML(
     "afterbegin",
     `
@@ -71,25 +102,110 @@ songs.forEach(function (song) {
         <p class="subtitle-card">${song.artist}</p>
       </div>
     </li>
-  `,
+    `,
   );
 
-  
-  const btnElemCard = document.querySelector(".btn-card");
-  const titleCardMenu = document.querySelector(".title-card_menu");
-  const subtitleCardMenu = document.querySelector(".subtitle-card_menu");
-  const imgMenu = document.querySelector(".menu-img");
-  
-  btnElemCard.addEventListener("click",function () {
-    audio.play();
-    menu()
-  });
+  const card = ulElem.firstElementChild;
+  const btnElemCard = card.querySelector(".btn-card");
 
-  function menu() {
-    audio.src = song.src;
-    imgMenu.src = song.img;
-    titleCardMenu.textContent = song.name;
-    subtitleCardMenu.textContent = song.artist;
+  btnElemCard.addEventListener("click", function () {
+    backImg()
+    btnMenuPlayImg.src = "images/pause-solid.webp";
+    menu(song);
+    audio.play();
+    playstatus = true;
+    currentSong = index;
+  });
+});
+
+btnMenuPlay.addEventListener("click", function () {
+  if (playstatus) {
+    audio.pause();
+    btnMenuPlayImg.src = "images/play-solid.webp";
+    playstatus = false;
+  } else {
+    audio.play();
+    btnMenuPlayImg.src = "images/pause-solid.webp";
+    playstatus = true;
   }
-  menu()
+});
+
+btnBack.addEventListener("click", function () {
+  backImg()
+  currentSong++;
+  if (currentSong > songs.length) {
+    currentSong = 0;
+  }
+  menu(songs[currentSong]);
+  audio.play();
+  btnMenuPlayImg.src = "images/pause-solid.webp";
+});
+
+btnForward.addEventListener("click", function () {
+  backImg()
+  currentSong--;
+  if (currentSong < 0) {
+    currentSong = 5;
+  }
+  menu(songs[currentSong]);
+  audio.play();
+  btnMenuPlayImg.src = "images/pause-solid.webp";
+});
+
+function formatTime(time) {
+  const min = Math.floor(time / 60);
+  const sec = Math.floor(time % 60);
+
+  return `${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
+}
+
+audio.addEventListener("loadedmetadata", function () {
+  timelineRange.max = audio.duration;
+  timelineRange.value = audio.currentTime;
+});
+audio.addEventListener("timeupdate", function () {
+  timeCurrent.textContent = formatTime(audio.currentTime);
+  timeTotal.textContent = formatTime(audio.duration);
+});
+timelineRange.addEventListener("input", function () {
+  audio.currentTime = Number(timelineRange.value);
+});
+
+let previousVolume = 0.5;
+
+volume.addEventListener("click", function () {
+  if (volumestatus) {
+    previousVolume = audio.volume;
+
+    audio.volume = 0;
+    volumeRange.value = 0;
+    volume.src = "images/volume-off.webp";
+
+    volumestatus = false;
+  } else {
+    audio.volume = previousVolume;
+    volumeRange.value = previousVolume * 100;
+    volume.src = "images/volume-2.webp";
+
+    volumestatus = true;
+  }
+});
+
+volumeRange.addEventListener("input", function () {
+  audio.volume = volumeRange.value / 100;
+  if (+volumeRange.value === 0) {
+    volume.src = "images/volume-off.webp";
+  } else {
+    volume.src = "images/volume-2.webp";
+  }
+});
+
+like.addEventListener("click", function () {
+  if (likestatus) {
+    like.src = "images/heart-regular.webp";
+    likestatus = false;
+  } else {
+    like.src = "images/heart-solid.webp";
+    likestatus = true;
+  }
 });

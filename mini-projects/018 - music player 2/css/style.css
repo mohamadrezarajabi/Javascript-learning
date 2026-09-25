@@ -239,8 +239,8 @@ circle {
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
   list-style: none;
   margin-top: var(--margin-xl);
-  gap: 10px;
-  margin-right: 10px;
+  gap: var(--gap-md);
+  padding: 0;
 }
 
 .card {
@@ -248,7 +248,7 @@ circle {
   padding: var(--padding-md);
   border-radius: var(--radius-md);
   border: 1px solid var(--border-primary);
-  width: 90%;
+  width: 95%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -264,7 +264,9 @@ circle {
 }
 .img-card {
   position: relative;
-  width: -webkit-fill-available;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-focus);
   transition: var(--transition-slow);
@@ -320,16 +322,23 @@ circle {
 .footer-card {
   width: 100%;
   text-align: end;
+  min-width: 0;
 }
 .title-card {
   color: var(--text-primary);
   font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .subtitle-card {
   color: var(--text-disabled);
   font-size: var(--fs-xs);
   margin-left: 1px;
   line-height: 1.4rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .cards-main {
@@ -364,6 +373,7 @@ circle {
   width: var(--icon-md);
   height: var(--icon-md);
   flex-shrink: 0;
+  cursor: pointer;
 }
 .volume-range {
   width: 100px;
@@ -430,6 +440,10 @@ circle {
   gap: var(--gap-lg);
   min-width: 0;
 }
+
+.menu-img,.text-menu__left {
+  display: none;
+}
 .menu-img {
   width: 58px;
   height: 58px;
@@ -462,6 +476,8 @@ circle {
 }
 .like {
   display: flex;
+  flex-shrink: 0;
+  cursor: pointer;
 }
 .img-like {
   width: var(--icon-md);
@@ -518,11 +534,6 @@ circle {
   background: var(--color-accent);
 }
 
-.range:hover::-webkit-slider-thumb,
-.range:focus-visible::-webkit-slider-thumb {
-  opacity: 1;
-}
-
 .range::-moz-range-track {
   height: var(--progress-height);
   background: var(--border-primary);
@@ -575,10 +586,7 @@ circle {
 
 @media (max-width: 1024px) {
   .menu-play {
-    grid-template-columns: minmax(120px, 1fr) minmax(0, 480px) minmax(
-        160px,
-        1fr
-      );
+    grid-template-columns: minmax(120px, 1fr) minmax(0, 480px) minmax(160px, 1fr);
     gap: var(--gap-lg);
     padding: 0 var(--padding-lg);
   }
@@ -604,9 +612,49 @@ circle {
   .cards-main {
     margin-bottom: 2rem;
   }
+  .menu-play {
+    height: auto;
+    padding: var(--padding-md) var(--padding-lg);
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "info volume"
+      "timeline timeline";
+    gap: var(--gap-md);
+  }
+  .menu-left {
+    grid-area: info;
+  }
+  .volume {
+    grid-area: volume;
+  }
+  .timeLine {
+    grid-area: timeline;
+  }
+  .menu-img {
+    width: 48px;
+    height: 48px;
+  }
 }
 
 @media (max-width: 480px) {
+  .container {
+    padding: var(--padding-sm);
+  }
+  .item-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gap-sm);
+  }
+  .card {
+    padding: var(--padding-sm);
+    gap: 8px;
+  }
+  .title-card {
+    font-size: var(--fs-md);
+  }
+  .subtitle-card {
+    font-size: 0.6875rem;
+    line-height: 1.2rem;
+  }
   .volume-range {
     display: none;
   }
