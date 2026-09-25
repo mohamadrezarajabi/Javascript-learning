@@ -109,7 +109,7 @@ songs.forEach(function (song, index) {
   const btnElemCard = card.querySelector(".btn-card");
 
   btnElemCard.addEventListener("click", function () {
-    backImg()
+    backImg();
     btnMenuPlayImg.src = "images/pause-solid.webp";
     menu(song);
     audio.play();
@@ -131,7 +131,7 @@ btnMenuPlay.addEventListener("click", function () {
 });
 
 btnBack.addEventListener("click", function () {
-  backImg()
+  backImg();
   currentSong++;
   if (currentSong > songs.length) {
     currentSong = 0;
@@ -142,7 +142,7 @@ btnBack.addEventListener("click", function () {
 });
 
 btnForward.addEventListener("click", function () {
-  backImg()
+  backImg();
   currentSong--;
   if (currentSong < 0) {
     currentSong = 5;
@@ -166,6 +166,9 @@ audio.addEventListener("loadedmetadata", function () {
 audio.addEventListener("timeupdate", function () {
   timeCurrent.textContent = formatTime(audio.currentTime);
   timeTotal.textContent = formatTime(audio.duration);
+
+  timelineRange.max = audio.duration;
+  timelineRange.value = audio.currentTime;
 });
 timelineRange.addEventListener("input", function () {
   audio.currentTime = Number(timelineRange.value);
