@@ -153,6 +153,9 @@ btnForward.addEventListener("click", function () {
 });
 
 function formatTime(time) {
+  if (isNaN(time) || !isFinite(time)) {
+    return "00:00";
+  }
   const min = Math.floor(time / 60);
   const sec = Math.floor(time % 60);
 
