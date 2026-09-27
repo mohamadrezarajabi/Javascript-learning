@@ -305,12 +305,12 @@ label {
   background: linear-gradient(
     to right,
     #4aa3ff 0%,
-    #4aa3ff 25%,
-    var(--success) 25%,
+    #4aa3ff 28.33%,
+    var(--success) 28.33%,
     var(--success) 50%,
     var(--warning) 50%,
-    var(--warning) 75%,
-    var(--danger) 75%,
+    var(--warning) 66.67%,
+    var(--danger) 66.67%,
     var(--danger) 100%
   );
 }
