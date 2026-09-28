@@ -345,6 +345,7 @@ html {
 
 body {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
 }
@@ -352,11 +353,12 @@ body {
 /* -------------------- footer ------------ */
 
 .wrap{
-  flex: 1;
+  flex: 1 0 auto;
 }
 
 .mr-signature {
   margin-top: 2rem;
+  flex-shrink: 0;
 }
 
 .mr-signature {
