@@ -53,11 +53,11 @@ passwordInput.addEventListener("keyup", function () {
 
 btnLogin.addEventListener("click", function () {
   if (usernameStatus && passwordStatus){
-    imgModal.setAttribute("src", "/assets/002 - Form Login/success.png");
+    imgModal.setAttribute("src", "../../mini-projects/002 - Form Login/images/success.png");
     pModal.innerHTML = "عملیات با موفقیت انجام شد";
     screenModal.classList.remove("hidden");
   } else {
-    imgModal.setAttribute("src", "/assets/002 - Form Login/failed.png");
+    imgModal.setAttribute("src", "../../mini-projects/002 - Form Login/images/failed.png");
     pModal.innerHTML = "عملیات با موفقیت انجام نشد";
     screenModal.classList.remove("hidden");
   }
