@@ -112,7 +112,7 @@ body {
 .btn-dark__mode:hover {
   border-color: var(--color-text-muted);
 }
-.sun {
+.status-mode {
   height: 24px;
 }
 
@@ -793,11 +793,11 @@ body {
     font-size: 12px;
   }
 
-  .sun {
+  .status-mode {
     height: 20px;
   }
 
-  .sun svg {
+  .status-mode svg {
     width: 20px;
     height: 20px;
   }
