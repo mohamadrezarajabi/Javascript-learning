@@ -1,4 +1,6 @@
 :root {
+  scroll-behavior: smooth;
+
   /* =========================
      Theme Colors — Light
   ========================= */

@@ -62,13 +62,6 @@ const darkMode = document.querySelector(".dark-mode");
 const statusMode = document.querySelector(".status-mode");
 const statusName = document.querySelector(".status-name");
 
-btnContact.addEventListener("click", function () {
-  document.documentElement.scrollTo(0, 400);
-});
-btnViewPM.addEventListener("click", function () {
-  document.documentElement.scrollTo(0, 100);
-});
-
 function render(){
   if (!localStorage.getItem("theme")) {
     localStorage.setItem("theme", "light");
