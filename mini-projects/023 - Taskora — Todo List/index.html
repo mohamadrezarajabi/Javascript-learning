@@ -1,0 +1,612 @@
+<!doctype html>
+
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>023</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../assets/style/common.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body class="loading" onload="Showloading()">
+    <!-- Loader -->
+    <div class="loader">
+      <div class="container-loader">
+        <div class="loader-shadow"></div>
+      </div>
+    </div>
+
+    <div class="container wrap">
+      <header class="header">
+        <div class="header-left">
+          <h2>Todo List</h2>
+          <div class="header-left__img">
+            <img src="./images/GreenLeaf.png" width="30" alt="" />
+          </div>
+        </div>
+        <div class="header-right">
+          <button class="theme-switch" type="button" aria-pressed="false">
+            <span class="theme-switch__thumb">
+              <svg
+                class="theme-switch__sun"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              >
+                <circle cx="12" cy="12" r="4" />
+                <path
+                  d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"
+                />
+              </svg>
+
+              <svg
+                class="theme-switch__moon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M20.9 13.1A8.5 8.5 0 0 1 10.9 3.1 8.5 8.5 0 1 0 20.9 13.1Z"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
+      </header>
+      <main class="main">
+        <section class="Counting">
+          <div class="main-count all-count">
+            <p class="main-count_p">همه تسک ها</p>
+            <span class="main-count_span">0</span>
+          </div>
+          <div class="main-count completed">
+            <p class="main-count_p">تسک های تکمیل شده</p>
+            <span class="main-count_span">0</span>
+          </div>
+          <div class="main-count uncompleted">
+            <p class="main-count_p">تسک های تکمیل نشده</p>
+            <span class="main-count_span">0</span>
+          </div>
+        </section>
+        <section class="main-search">
+          <div class="btn-add_task">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-plus preview-icon"
+            >
+              <path d="M5 12h14" />
+              <path d="M12 5v14" />
+            </svg>
+            <span>ایجاد تسک</span>
+          </div>
+          <div class="input-search">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="19"
+              height="1"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ffffff"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-search preview-icon"
+            >
+              <path d="m21 21-4.34-4.34" />
+              <circle cx="11" cy="11" r="8" />
+            </svg>
+            <input type="text" placeholder="جستجو تسک..." id="search-task" />
+          </div>
+          <select name="option" id="sorting">
+            <option value="select" disabled selected>مرتب سازی: براساس</option>
+            <option value="newest">جدیدترین</option>
+            <option value="oldest">قدیمی‌ترین</option>
+            <option value="title-asc">عنوان: الف تا ی</option>
+            <option value="title-desc">عنوان: ی تا الف</option>
+          </select>
+        </section>
+        <section class="select-filters">
+          <div class="select-option__filter">
+            <div class="select-filter select select-all">همه</div>
+            <div class="select-filter select-completed">تکمیل شده</div>
+            <div class="select-filter select-uncompleted">تکمیل نشده</div>
+          </div>
+          <div class="select-filter favorites">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ffffff"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-star preview-icon"
+            >
+              <path
+                d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"
+              />
+            </svg>
+          </div>
+        </section>
+        <section class="todo-section">
+          <ul class="todo-list"></ul>
+        </section>
+      </main>
+      <section class="modals-container" aria-label="پنجره‌های مدیریت تسک">
+        <div
+          class="modal modal-create"
+          id="create-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="create-modal-title"
+          aria-hidden="true"
+        >
+          <div class="modal-content">
+            <header class="modal-header">
+              <h2 class="modal-title" id="create-modal-title">
+                ایجاد تسک جدید
+              </h2>
+
+              <button type="button" class="modal-close" aria-label="بستن پنجره">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg>
+              </button>
+            </header>
+
+            <form class="task-form task-create-form">
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="create-task-title">
+                    عنوان تسک
+                    <span aria-hidden="true">*</span>
+                  </label>
+
+                  <input
+                    type="text"
+                    id="create-task-title"
+                    class="task-title-input"
+                    name="title"
+                    placeholder="عنوان تسک را وارد کنید"
+                    maxlength="100"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="create-task-description"> توضیحات </label>
+
+                  <textarea
+                    id="create-task-description"
+                    class="task-description-input"
+                    name="description"
+                    rows="4"
+                    maxlength="1000"
+                    placeholder="توضیحات تسک را بنویسید..."
+                  ></textarea>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="create-task-date"> تاریخ </label>
+
+                    <input
+                      type="date"
+                      id="create-task-date"
+                      class="task-date-input"
+                      name="date"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="create-task-time"> ساعت </label>
+
+                    <input
+                      type="time"
+                      id="create-task-time"
+                      class="task-time-input"
+                      name="time"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group form-group-inline">
+                  <label for="create-task-favorite">
+                    افزودن به علاقه‌مندی‌ها
+                  </label>
+
+                  <input
+                    type="checkbox"
+                    id="create-task-favorite"
+                    class="task-favorite-input"
+                    name="favorite"
+                  />
+                </div>
+              </div>
+
+              <footer class="modal-footer">
+                <button
+                  type="button"
+                  class="modal-button modal-button--primary modal-submit"
+                >
+                  ایجاد تسک
+                </button>
+
+                <button
+                  type="button"
+                  class="modal-button modal-button--secondary modal-cancel"
+                >
+                  انصراف
+                </button>
+              </footer>
+            </form>
+          </div>
+        </div>
+
+        <div
+          class="modal modal-delete"
+          id="delete-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="delete-modal-title"
+          aria-describedby="delete-modal-description"
+          aria-hidden="true"
+        >
+          <div class="modal-content modal-content--delete">
+            <header class="modal-header">
+              <h2 class="modal-title" id="delete-modal-title">حذف تسک</h2>
+
+              <button type="button" class="modal-close" aria-label="بستن پنجره">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg>
+              </button>
+            </header>
+
+            <div class="modal-body">
+              <div class="modal-status-icon modal-status-icon--danger">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M3 6h18"></path>
+                  <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  <path d="M19 6l-1 14H6L5 6"></path>
+                  <path d="M10 11v5"></path>
+                  <path d="M14 11v5"></path>
+                </svg>
+              </div>
+
+              <p class="delete-message" id="delete-modal-description">
+                آیا مطمئن هستید که می‌خواهید این تسک را حذف کنید؟
+              </p>
+
+              <p class="delete-warning">
+                پس از حذف، این تسک دیگر در فهرست شما نمایش داده نمی‌شود.
+              </p>
+            </div>
+
+            <footer class="modal-footer">
+              <button
+                type="button"
+                class="modal-button modal-button--danger confirm-delete"
+              >
+                حذف تسک
+              </button>
+
+              <button
+                type="button"
+                class="modal-button modal-button--secondary modal-cancel"
+              >
+                انصراف
+              </button>
+            </footer>
+          </div>
+        </div>
+
+        <div
+          class="modal modal-edit"
+          id="edit-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="edit-modal-title"
+          aria-hidden="true"
+        >
+          <div class="modal-content">
+            <header class="modal-header">
+              <h2 class="modal-title" id="edit-modal-title">ویرایش تسک</h2>
+
+              <button type="button" class="modal-close" aria-label="بستن پنجره">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg>
+              </button>
+            </header>
+
+            <form class="task-form task-edit-form">
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="edit-task-title">
+                    عنوان تسک
+                    <span aria-hidden="true">*</span>
+                  </label>
+
+                  <input
+                    type="text"
+                    id="edit-task-title"
+                    class="task-title-input"
+                    name="title"
+                    placeholder="عنوان تسک را وارد کنید"
+                    maxlength="100"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="edit-task-description"> توضیحات </label>
+
+                  <textarea
+                    id="edit-task-description"
+                    class="task-description-input"
+                    name="description"
+                    rows="4"
+                    maxlength="1000"
+                    placeholder="توضیحات تسک را بنویسید..."
+                  ></textarea>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="edit-task-date"> تاریخ </label>
+
+                    <input
+                      type="date"
+                      id="edit-task-date"
+                      class="task-date-input"
+                      name="date"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="edit-task-time"> ساعت </label>
+
+                    <input
+                      type="time"
+                      id="edit-task-time"
+                      class="task-time-input"
+                      name="time"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group form-group-inline">
+                  <label for="edit-task-favorite">
+                    افزودن به علاقه‌مندی‌ها
+                  </label>
+
+                  <input
+                    type="checkbox"
+                    id="edit-task-favorite"
+                    class="task-favorite-input"
+                    name="favorite"
+                  />
+                </div>
+              </div>
+
+              <footer class="modal-footer">
+                <button
+                  type="submit"
+                  class="modal-button modal-button--primary save-task-changes"
+                >
+                  ذخیره تغییرات
+                </button>
+
+                <button
+                  type="button"
+                  class="modal-button modal-button--secondary modal-cancel"
+                >
+                  انصراف
+                </button>
+              </footer>
+            </form>
+          </div>
+        </div>
+
+        <div
+          class="modal modal-view"
+          id="view-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="view-modal-title"
+          aria-hidden="true"
+        >
+          <div class="modal-content modal-content--view">
+            <header class="modal-header">
+              <h2 class="modal-title" id="view-modal-title">جزئیات تسک</h2>
+
+              <button type="button" class="modal-close" aria-label="بستن پنجره">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg>
+              </button>
+            </header>
+
+            <div class="modal-body">
+              <div class="view-task-header">
+                <h3 class="view-task-title">عنوان تسک</h3>
+
+                <span class="view-task-status"> تکمیل نشده </span>
+              </div>
+
+              <div class="view-task-section">
+                <h4 class="view-task-label">توضیحات</h4>
+
+                <p class="view-task-description">
+                  توضیحات این تسک در این بخش نمایش داده می‌شود.
+                </p>
+              </div>
+
+              <div class="view-task-details">
+                <div class="view-task-detail">
+                  <span class="view-task-label"> تاریخ </span>
+
+                  <time class="view-task-date"></time>
+                </div>
+
+                <div class="view-task-detail">
+                  <span class="view-task-label"> ساعت </span>
+
+                  <time class="view-task-time"></time>
+                </div>
+
+                <div class="view-task-detail">
+                  <span class="view-task-label"> علاقه‌مندی </span>
+
+                  <span class="view-task-favorite"> خیر </span>
+                </div>
+              </div>
+            </div>
+
+            <footer class="modal-footer">
+              <button
+                type="button"
+                class="modal-button modal-button--primary view-edit-task"
+              >
+                ویرایش تسک
+              </button>
+
+              <button
+                type="button"
+                class="modal-button modal-button--secondary modal-cancel"
+              >
+                بستن
+              </button>
+            </footer>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- MR Signature Footer -->
+    <footer class="mr-signature" dir="ltr" lang="en">
+      <div class="mr-signature__identity">
+        <img
+          src="./images/Logo.webp"
+          alt="logo"
+          class="mr-signature__badge"
+          aria-hidden="true"
+        />
+        <span class="mr-signature__text">
+          <span class="mr-signature__name">Mohamad Reza Rajabi</span>
+          <span class="mr-signature__role">— design &amp; development</span>
+        </span>
+      </div>
+      <div class="mr-signature__links">
+        <span class="mr-signature__year">© <span data-year></span></span>
+        <a
+          href="https://github.com/mohamadrezarajabi"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub profile"
+        >
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
+            />
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+      <script>
+        document
+          .querySelectorAll(".mr-signature [data-year]")
+          .forEach(function (el) {
+            el.textContent = new Date().getFullYear();
+          });
+      </script>
+    </footer>
+
+    <script src="js/Project.js"></script>
+  </body>
+</html>
