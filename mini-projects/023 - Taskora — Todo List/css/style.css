@@ -297,6 +297,7 @@ h2 {
   display: flex;
   justify-content: space-around;
   width: 100%;
+  flex-wrap: wrap;
   gap: 1.2rem;
 }
 .main-count {
@@ -305,12 +306,12 @@ h2 {
   align-items: center;
   padding: 15px 0;
   background-color: var(--color-surface-soft);
-  width: 100%;
   border-radius: var(--radius-lg);
   gap: 10px;
   font-weight: 600;
   font-size: 17px;
   color: var(--color-text);
+  flex: 1 30%;
 }
 
 .main-search {
@@ -408,12 +409,6 @@ h2 {
   opacity: 0.7;
 }
 
-@media (max-width: 600px) {
-  #sorting {
-    width: 100%;
-    min-width: 0;
-  }
-}
 
 .select-filters {
   display: flex;
@@ -591,12 +586,12 @@ h2 {
   color: var(--color-favorite);
 }
 
-.todo-item--favorite .todo-favorite {
+.todo-favorite.active {
   color: var(--color-favorite);
 }
 
-.todo-item--favorite .todo-favorite svg {
-  fill: currentColor;
+.todo-favorite.active svg path {
+  fill: var(--color-favorite);
 }
 
 .todo-meta {
@@ -1403,6 +1398,7 @@ h2 {
     gap: var(--space-2);
     font-size: var(--font-size-sm);
     text-align: center;
+    flex: 1 49%;
   }
 
   .main-search {
