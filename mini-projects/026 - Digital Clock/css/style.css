@@ -1,0 +1,121 @@
+:root {
+  /* Background */
+  --color-background: #050b14;
+  --color-surface: #071321;
+
+  /* Clock */
+  --color-clock-frame: #00bfff;
+  --color-clock-text: #00c8ff;
+  --color-clock-glow: rgba(0, 191, 255, 0.35);
+
+  /* Text */
+  --color-text-primary: #eaf8ff;
+  --color-text-secondary: #7f9db5;
+
+  /* Border */
+  --border-width: 1px;
+  --border-radius: 18px;
+
+  /* Spacing */
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+
+  /* Typography */
+  --font-family: "Franklin Gothic Medium", Arial, sans-serif;
+  --font-size-clock: clamp(3rem, 10vw, 6rem);
+}
+
+@font-face {
+  font-family: "Digital";
+  src: url("../Font/DS-DIGIB.woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: var(--color-background);
+  font-family: var(--font-family);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.time {
+  font-family: "Digital", sans-serif;
+  font-size: clamp(2.8rem, 12vw, 6rem);
+  color: var(--color-clock-text);
+  padding: 0;
+  line-height: 0;
+  text-shadow: 0 0 300px var(--color-clock-text);
+}
+
+.date {
+  font-size: clamp(30px, 8vw, 3rem);
+  color: var(--color-clock-text);
+  text-align: center;
+  text-shadow: 0 0 300px var(--color-clock-text);
+}
+
+.color-panel {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 174px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  background: rgba(7, 19, 33, 0.78);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.color-panel__preview {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-clock-text);
+  box-shadow: 0 0 10px var(--color-clock-glow);
+}
+
+.color-panel__arrow {
+  margin-left: auto;
+  color: var(--color-text-secondary);
+}
+
+.color-panel__presets {
+  display: flex;
+  justify-content: space-between;
+}
+
+.color-panel__presets button {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  background: var(--swatch);
+  cursor: pointer;
+  transition: transform 0.2s, outline 0.2s;
+}
+
+.color-panel__presets button:hover {
+  transform: scale(1.2);
+}
+
+.color-panel__presets button.active {
+  outline: 2px solid var(--swatch);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .color-panel {
+    right: 12px;
+    bottom: 12px;
+  }
+}
+
