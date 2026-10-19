@@ -1,0 +1,93 @@
+body {
+  background-color: #5f5f5f;
+  --color-accent: #fff;
+}
+.page {
+  flex: 1 0 auto;
+}
+.wrap {
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 12px;
+  background: #1e1e2e;
+  color: #fff;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.hint {
+  font-size: 13px;
+  color: #a6adc8;
+  line-height: 1.7;
+}
+
+.card {
+  background: #313244;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card h4 {
+  margin: 0;
+  font-size: 14px;
+  color: #f9e2af;
+}
+
+.small {
+  margin: 0;
+  font-size: 12px;
+  color: #a6adc8;
+}
+
+input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #45475a;
+  background: #1e1e2e;
+  color: #fff;
+  white-space: pre; /* keeps the spaces inside the input visible */
+}
+
+button {
+  padding: 8px 10px;
+  border: none;
+  border-radius: 6px;
+  background: #89b4fa;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+h3 {
+  font-size: 13px;
+  color: #89b4fa;
+  margin: 16px 0 6px;
+  text-align: left;
+}
+
+.step,
+.code,
+.result {
+  background: #313244;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  text-align: left;
+  margin: 0;
+  line-height: 1.7;
+  white-space: pre-wrap; /* keeps spaces and new lines visible */
+}
+
+.code {
+  color: #f9e2af;
+  font-family: monospace;
+}
+
+.result {
+  color: #a6e3a1;
+  font-weight: bold;
+}
