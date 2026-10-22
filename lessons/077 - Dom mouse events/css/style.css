@@ -1,0 +1,106 @@
+body {
+  background-color: #5f5f5f;
+  --color-accent: #fff;
+}
+.page {
+  flex: 1 0 auto;
+}
+.wrap {
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 12px;
+  background: #1e1e2e;
+  color: #fff;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.hint {
+  font-size: 13px;
+  color: #a6adc8;
+  line-height: 1.7;
+}
+
+.outer {
+  background: #f38ba8;
+  color: #1e1e2e;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 16px;
+  border-radius: 10px;
+  margin: 16px 0;
+  cursor: pointer;
+}
+
+.inner {
+  background: #89b4fa;
+  padding: 24px 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.counts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  text-align: left;
+}
+
+.counts li {
+  background: #313244;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.counts span {
+  color: #a6e3a1;
+  font-weight: bold;
+}
+
+.position {
+  font-size: 13px;
+  color: #f9e2af;
+}
+
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #f9e2af;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+h3 {
+  font-size: 13px;
+  color: #89b4fa;
+  margin: 16px 0 6px;
+  text-align: left;
+}
+
+.step,
+.code,
+.result {
+  background: #313244;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  text-align: left;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.code {
+  color: #f9e2af;
+  font-family: monospace;
+}
+
+.result {
+  color: #a6e3a1;
+  font-weight: bold;
+}
