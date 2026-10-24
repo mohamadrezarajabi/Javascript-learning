@@ -204,6 +204,42 @@ label {
   opacity: 1;
 }
 
+
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .main {
+    margin: 0 1rem;
+  }
+
+  .count-book {
+    font-size: 16px;
+  }
+
+  .btn-Add {
+    font-size: 16px;
+    padding: 10px 12px;
+  }
+
+  .table-lists {
+    font-size: 14px;
+  }
+
+  .table-lists th,
+  .table-lists td {
+    padding: 12px;
+  }
+
+  .modal {
+    padding: 20px;
+  }
+}
+
 @media (max-width: 600px) {
   .main {
     margin: 0 1rem;
@@ -213,5 +249,71 @@ label {
   .table-lists td {
     padding: 12px 10px;
     font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 1rem 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .header_left {
+    gap: 4px;
+  }
+
+  .count-book {
+    font-size: 14px;
+    gap: 4px;
+  }
+
+  .main {
+    margin: 0 0.75rem;
+  }
+
+  .btn-Add {
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 1rem;
+  }
+
+  .table-lists {
+    table-layout: fixed;
+  }
+
+  .table-lists th,
+  .table-lists td {
+    padding: 10px 6px;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .modal {
+    width: calc(100% - 32px);
+    padding: 18px;
+    gap: 12px;
+  }
+
+  .header-modal {
+    font-size: 16px;
+  }
+
+  .input-modal input {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+
+  label {
+    font-size: 15px;
+  }
+
+  .btn-modal {
+    gap: 8px;
+  }
+
+  .btn-modal button {
+    padding: 10px;
+    font-size: 15px;
   }
 }
