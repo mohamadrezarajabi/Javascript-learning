@@ -1,0 +1,217 @@
+:root {
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-background: #f5f7fb;
+  --color-surface: #ffffff;
+  --color-text: #1e293b;
+  --color-text-muted: #64748b;
+  --color-border: #e2e8f0;
+  --color-danger: #ef3340;
+  --color-danger-bg: #ffe8eb;
+  --color-overlay: rgba(15, 23, 42, 0.65);
+  --color-input: #ffffff;
+
+  --font-family: "Vazirmatn", sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
+  --shadow-modal: 0 20px 60px rgba(15, 23, 42, 0.2);
+
+  --transition: 0.2s ease;
+}
+
+.container {
+  font-family: var(--font-family);
+}
+
+.header {
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 2rem;
+}
+.main {
+  margin: 0 2rem;
+}
+
+.count-book {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 5px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.header_left {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 5px;
+}
+
+.btn-Add {
+  background-color: var(--color-primary);
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  color: #fff;
+  font-size: 18px;
+  gap: 3px;
+  line-height: 5px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  margin-bottom: 1.45rem;
+  cursor: pointer;
+}
+.btn-Add:hover {
+  background-color: var(--color-primary-hover);
+  transform: scale(1.02);
+}
+
+.table-lists {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  text-align: right;
+}
+
+.table-lists th,
+.table-lists td {
+  padding: 16px 20px;
+  text-align: right;
+  border-bottom: 1px solid var(--color-border);
+  border-left: 1px solid #e2e8f0;
+}
+
+.table-lists th {
+  background-color: #f8fafc;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.table-lists td {
+  color: var(--color-text);
+  font-size: 15px;
+  font-weight: 400;
+  transition: background-color var(--transition);
+}
+
+.table-lists tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table-lists tbody tr {
+  transition: background-color var(--transition);
+}
+
+.table-lists tbody tr:hover {
+  background-color: #f8faff;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
+  transition: var(--transition);
+}
+.modal {
+  width: min(450px, 90%);
+  background-color: #fff;
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow-modal);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.header-modal {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 18px;
+  line-height: 5px;
+}
+.back-modal {
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+label {
+  display: block;
+  font-size: 18px;
+}
+
+.input-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.input-modal input {
+  padding: 7px 9px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  outline: none;
+}
+.btn-modal {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-modal button {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  border: none;
+  outline: none;
+  padding: 12px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.submit {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.modal-overlay.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .main {
+    margin: 0 1rem;
+  }
+
+  .table-lists th,
+  .table-lists td {
+    padding: 12px 10px;
+    font-size: 13px;
+  }
+}
