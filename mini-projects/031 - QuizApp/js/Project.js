@@ -131,6 +131,12 @@ function showQuiz() {
   }
 }
 
+function resetOptions() {
+  options.forEach(function (option) {
+    option.checked = false;
+  });
+}
+
 function scoring() {
   const selectOption = Array.from(options).find(function (option) {
     return option.checked;
@@ -155,9 +161,10 @@ btnNext.addEventListener("click", function () {
   }
 
   scoring();
+  resetOptions()
 
   if (currentQuizIndex === questions.length - 1) {
-    const percent = score * 10;
+    const percent = (score / questions.length) * 100;
     scoreValue.textContent = `${percent}%`;
     statCorrect.textContent = score;
     statWrong.textContent = questions.length - score;
