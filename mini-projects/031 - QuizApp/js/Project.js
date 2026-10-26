@@ -39,7 +39,7 @@ const questions = [
     id: 5,
     question: "خروجی عبارت 2 + '3' چیست؟",
     options: ["5", "'32'", "32", "NaN"],
-    answer: "'23'",
+    answer: "'32'",
   },
   {
     id: 6,
