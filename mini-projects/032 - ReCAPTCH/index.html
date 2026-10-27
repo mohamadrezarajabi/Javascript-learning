@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Count words, characters, sentences and paragraphs as you type."
+    />
+    <title>032</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Vazirmatn:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../assets/style/common.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body class="loading" onload="Showloading()">
+    <!-- Loader -->
+    <div class="loader">
+      <div class="container-loader">
+        <div class="loader-shadow"></div>
+      </div>
+    </div>
+    <div class="container wrap">
+      <section class="captcha">
+        <div class="captcha-header">
+          <h1>تأیید کپچا</h1>
+          <p>کد نمایش داده‌شده را وارد کنید.</p>
+        </div>
+
+        <div class="captcha-code">
+          <button class="btn-refresh" type="button" aria-label="تولید کد جدید">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 7v5h-5"></path>
+              <path d="M4 17v-5h5"></path>
+              <path d="M5.6 9a7 7 0 0 1 11.6-2L20 12"></path>
+              <path d="M18.4 15a7 7 0 0 1-11.6 2L4 12"></path>
+            </svg>
+          </button>
+          <span class="captcha-text"></span>
+        </div>
+
+        <form class="captcha-form">
+          <label for="captcha-input">کد امنیتی</label>
+          <input
+            id="captcha-input"
+            name="captcha"
+            type="text"
+            placeholder="کد را وارد کنید"
+            autocomplete="off"
+            spellcheck="false"
+            required
+          />
+          <button class="btn-submit" type="submit">بررسی کنید</button>
+        </form>
+      </section>
+    </div>
+
+    <div class="toast hidden" role="status" aria-live="polite">
+      <div class="toast-content">
+        <span class="toast-icon" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m5 12 4 4L19 6"></path>
+          </svg>
+        </span>
+        <div class="toast-message">
+          <strong>بررسی با موفقیت انجام شد</strong>
+          <p>کد واردشده صحیح است.</p>
+        </div>
+        <button class="toast-close" type="button" aria-label="بستن پیام">
+          ×
+        </button>
+      </div>
+      <div class="toast-progress">
+        <span class="progress-bar"></span>
+      </div>
+    </div>
+
+    <!-- MR Signature Footer -->
+    <footer class="mr-signature" dir="ltr" lang="en">
+      <div class="mr-signature__identity">
+        <img
+          src="../../assets/images/Logo.webp"
+          alt=""
+          width="29"
+          height="21"
+          class="mr-signature__badge"
+        />
+        <span class="mr-signature__text">
+          <span class="mr-signature__name">Mohamad Reza Rajabi</span>
+          <span class="mr-signature__role">— design &amp; development</span>
+        </span>
+      </div>
+      <div class="mr-signature__links">
+        <span class="mr-signature__year">© <span data-year></span></span>
+        <a
+          href="https://github.com/mohamadrezarajabi"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub profile"
+        >
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
+            />
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+      <script>
+        document
+          .querySelectorAll(".mr-signature [data-year]")
+          .forEach(function (el) {
+            el.textContent = new Date().getFullYear();
+          });
+      </script>
+    </footer>
+
+    <script src="js/Project.js"></script>
+  </body>
+</html>
