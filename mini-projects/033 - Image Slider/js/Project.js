@@ -22,17 +22,23 @@ function isActive(index) {
   slides[index].classList.add("active");
 }
 
-next.addEventListener("click", function () {
+function setNext() {
   index++;
   if (index >= slides.length) {
     index = 0;
   }
   isActive(index);
-});
-prev.addEventListener("click", function () {
+}
+
+function setPrev() {
   index--;
   if (index < 0) {
     index = slides.length - 1;
   }
   isActive(index);
-});
+}
+
+next.addEventListener("click", setNext);
+prev.addEventListener("click", setPrev);
+
+setInterval(setNext, 4000);
