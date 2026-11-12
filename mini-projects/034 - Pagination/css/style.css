@@ -1,0 +1,321 @@
+.container {
+  width: 80vw;
+  margin: 2rem auto;
+  font-family: "Playfair Display", "Lora", sans-serif;
+}
+
+.header {
+  font-family: "Lora";
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 2rem;
+  padding: 0;
+  line-height: 0;
+}
+
+.header p {
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #737070;
+}
+
+.heading::after {
+  content: "";
+  width: 43px;
+  height: 1px;
+  background-color: #737070;
+}
+
+.header h1 {
+  font-family: "Playfair Display";
+  font-size: 60px;
+  line-height: 0;
+  font-weight: bold;
+}
+
+.header p:last-child {
+  color: #404040;
+  word-spacing: 1px;
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.articles-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 32px;
+}
+
+.article-card {
+  padding: 12px 0;
+  border-bottom: 1px solid #dedee3;
+}
+
+.article-category {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  line-height: 1.2;
+  font-family: serif;
+  letter-spacing: 1px;
+}
+
+.article-category.development {
+  background: #d3eafa;
+}
+
+.article-category.design {
+  background: #e8def8;
+}
+
+.article-category.technology {
+  background: #cce9dc;
+}
+
+.article-title {
+  margin: 7px 0 2px;
+  font-family: "Lora", serif;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.article-description {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #343b4d;
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 9px;
+  font-size: 13px;
+  color: #343b4d;
+  font-family: serif;
+}
+
+.article-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.article-meta .meta-divider {
+  width: 1px;
+  height: 14px;
+  background: #bfc1c8;
+}
+
+.article-category.ai {
+  background: #e8def8;
+}
+
+.article-category.seo {
+  background: #fce5ce;
+}
+
+.article-category.frontend {
+  background: #d3eafa;
+}
+
+.article-category.full-stack {
+  background: #e8def8;
+}
+
+.page-slice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 2.5rem;
+  font-family: "Lora", serif;
+}
+
+.page,
+.pageSkip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #dedee3;
+  border-radius: 6px;
+  background: transparent;
+  color: #343b4d;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.slice {
+  gap: 6px;
+}
+
+.slice svg {
+  width: 17px;
+  height: 17px;
+}
+
+.page:hover:not(:disabled),
+.pageSkip:hover:not(:disabled) {
+  background: #f1f1f2;
+  border-color: #b8b8be;
+}
+
+.page.active {
+  background: #242424;
+  color: #fff;
+  border-color: #242424;
+}
+
+.page:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.page:focus-visible {
+  outline: 2px solid #777;
+  outline-offset: 3px;
+}
+
+/* ---------------- Responsive ---------------- */
+
+@media (max-width: 768px) {
+  .container {
+    width: 88%;
+    margin: 1.5rem auto;
+  }
+
+  .header {
+    gap: 12px;
+    margin-bottom: 1.8rem;
+  }
+
+  .header h1 {
+    font-size: clamp(38px, 6vw, 48px);
+    line-height: 1.2;
+  }
+
+  .header p {
+    font-size: 14px;
+  }
+
+  .header p:last-child {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .heading::after {
+    width: 32px;
+  }
+
+  .articles-container {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+    margin: 1.2rem auto;
+  }
+
+  .header {
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+
+  .header .heading {
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .heading::after {
+    width: 24px;
+  }
+
+  .header h1 {
+    font-size: clamp(32px, 9vw, 38px);
+    line-height: 1.2;
+  }
+
+  .header p:last-child {
+    font-size: 14px;
+    line-height: 1.6;
+    word-spacing: 0;
+  }
+
+  .article-card {
+    padding: 16px 0;
+  }
+
+  .article-title {
+    font-size: 17px;
+    line-height: 1.4;
+  }
+
+  .article-description {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .article-category {
+    font-size: 12px;
+  }
+
+  .article-meta {
+    font-size: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .page-slice {
+    gap: 6px;
+    margin-top: 2rem;
+  }
+
+  .page,
+  .pageSkip {
+    min-width: 34px;
+    height: 36px;
+    padding: 0 8px;
+    font-size: 12px;
+  }
+
+  .slice svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    width: 92%;
+  }
+
+  .header h1 {
+    font-size: 30px;
+  }
+
+  .page-slice {
+    gap: 4px;
+  }
+
+  .page,
+  .pageSkip {
+    min-width: 30px;
+    height: 34px;
+    padding: 0 6px;
+  }
+}
