@@ -130,3 +130,126 @@ body {
 .toast.Info .toast-progress-bar {
   background-color: #261da7;
 }
+
+/* ================================
+   Responsive Design
+================================ */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .container {
+    padding: 24px 16px;
+  }
+
+  .title {
+    gap: 8px;
+  }
+
+  .title svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .title h1 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .btns {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .toast {
+    right: 16px;
+    max-width: calc(100% - 32px);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .container {
+    padding: 20px 12px;
+  }
+
+  .title {
+    gap: 7px;
+  }
+
+  .title svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .title h1 {
+    font-size: 1.5rem;
+  }
+
+  .btns {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .btn {
+    justify-content: center;
+    padding: 10px 6px;
+    font-size: 0.9rem;
+  }
+
+  .toast {
+    top: 12px;
+    right: 12px;
+    left: 12px;
+    width: auto;
+    max-width: none;
+    box-sizing: border-box;
+    gap: 10px;
+    padding: 13px 10px;
+  }
+
+  .toast-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .toast-content {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .toast-title {
+    font-size: 0.95rem;
+    margin: 0 0 4px;
+  }
+
+  .toast-message {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .toast-close {
+    flex-shrink: 0;
+    padding: 4px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 360px) {
+  .btn {
+    gap: 4px;
+    font-size: 0.8rem;
+  }
+
+  .btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .toast {
+    gap: 7px;
+  }
+}
