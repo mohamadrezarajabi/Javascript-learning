@@ -1,14 +1,3 @@
-/* -------------------- loader ---------------- */
-
-const loader = document.querySelector(".loader");
-
-function Showloading() {
-  document.querySelector(".loader").classList.add("hidden");
-  document.body.classList.remove("loading");
-}
-
-/* ---------------------- */
-
 const big = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const small = "abcdefghijklmnopqrstuvwxyz";
 const num = "0123456789";
