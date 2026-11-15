@@ -100,7 +100,7 @@ body {
   outline: none;
   text-align: center;
   font-weight: bold;
-  letter-spacing: 6px;
+  letter-spacing: 4px;
 }
 .btn-copy {
   display: flex;

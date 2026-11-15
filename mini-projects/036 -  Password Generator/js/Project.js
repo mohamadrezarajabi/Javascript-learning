@@ -68,7 +68,9 @@ function passwordGenarator() {
     characters += selectedCharactrs;
   });
 
-  for (let i = 0; i < range.value - charRandom.length; i++) {
+  let remaining = range.value - charRandom.length;
+
+  for (let i = 0; i < remaining; i++) {
     charRandom += characters[Math.floor(Math.random() * characters.length)];
   }
 
