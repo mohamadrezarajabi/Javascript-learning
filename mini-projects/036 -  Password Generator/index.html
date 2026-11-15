@@ -30,9 +30,29 @@
   </head>
 
   <body>
-    <div class="preloader" id="preloader" role="status" aria-live="polite">
+    <div
+      class="preloader"
+      id="preloader"
+      role="status"
+      aria-live="polite"
+      style="
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      "
+    >
       <span class="visually-hidden">Loading</span>
-      <div class="preloader__logo">
+      <div
+        class="preloader__logo"
+        style="
+          display: grid;
+          width: min(clamp(180px, 26vw, 340px), 60vh);
+          max-width: calc(100vw - 48px);
+        "
+      >
         <img
           class="preloader__layer preloader__layer--m"
           src="../../assets/images/Logo.webp"
@@ -41,6 +61,7 @@
           height="1024"
           fetchpriority="high"
           decoding="async"
+          style="grid-area: 1 / 1; display: block; width: 100%; height: auto; max-width: 100%;"
         />
         <img
           class="preloader__layer preloader__layer--r"
@@ -50,6 +71,7 @@
           height="1024"
           fetchpriority="high"
           decoding="async"
+          style="grid-area: 1 / 1; display: block; width: 100%; height: auto; max-width: 100%;"
         />
         <img
           class="preloader__layer preloader__layer--shine"
@@ -60,6 +82,7 @@
           fetchpriority="high"
           decoding="async"
           aria-hidden="true"
+          style="grid-area: 1 / 1; display: block; width: 100%; height: auto; max-width: 100%;"
         />
       </div>
     </div>
