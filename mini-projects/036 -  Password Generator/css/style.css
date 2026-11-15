@@ -323,3 +323,109 @@ body {
 .btn-submit:active {
   transform: scale(0.9);
 }
+
+
+/* ---------------- Responsive ---------------- */
+
+@media (max-width: 768px) {
+  .main {
+    width: min(100%, 550px);
+  }
+
+  .progress-password {
+    gap: 14px;
+  }
+
+  .progress-password p {
+    font-size: 14px;
+  }
+
+  .option {
+    padding: 12px;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .main {
+    width: 100%;
+    padding: 14px;
+  }
+
+  .main-header h2 {
+    font-size: 18px;
+  }
+
+  .lock svg {
+    width: 29px;
+    height: 29px;
+  }
+
+  .progress-password {
+    gap: 10px;
+  }
+
+  .progress-password p {
+    font-size: 13px;
+  }
+
+  .count-password {
+    min-width: 36px;
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .password-options {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .option {
+    padding: 11px 13px;
+  }
+
+  .option-content strong {
+    font-size: 13px;
+  }
+
+  .title-strength p {
+    font-size: 14px;
+  }
+
+  .title-strength h3 {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .line {
+    height: 10px;
+  }
+
+  .btn-submit {
+    padding: 11px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .main-header h2 {
+    font-size: 16px;
+  }
+
+  .progress-password {
+    gap: 7px;
+  }
+
+  .progress-password p {
+    font-size: 12px;
+  }
+
+  .option {
+    gap: 9px;
+  }
+}
