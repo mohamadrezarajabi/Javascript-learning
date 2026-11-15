@@ -1,6 +1,6 @@
 /**
  * Shared MR Preloader
- * Loads the shared HTML and CSS once per page, then waits for page assets.
+ * Injects the overlay immediately; no fetch() request is needed for its HTML.
  */
 (() => {
   "use strict";
@@ -9,17 +9,62 @@
   if (!currentScript) return;
 
   const assetsUrl = new URL(".", currentScript.src);
-  const htmlUrl = new URL("preloader.html", assetsUrl);
   const cssUrl = new URL("preloader.css", assetsUrl);
   const logoUrl = new URL("../images/Logo.webp", assetsUrl);
 
   if (document.getElementById("preloader")) return;
 
-  const stylesheet = document.createElement("link");
-  stylesheet.rel = "stylesheet";
-  stylesheet.href = cssUrl.href;
-  document.head.appendChild(stylesheet);
+  // Critical styles prevent a flash while the external stylesheet downloads.
+  const preloader = document.createElement("div");
+  preloader.className = "preloader";
+  preloader.id = "preloader";
+  preloader.setAttribute("role", "status");
+  preloader.setAttribute("aria-live", "polite");
+  Object.assign(preloader.style, {
+    position: "fixed",
+    inset: "0",
+    zIndex: "99999",
+    display: "grid",
+    placeItems: "center",
+    background: "rgba(16, 23, 32, 0.42)",
+    backdropFilter: "blur(8px)",
+    webkitBackdropFilter: "blur(8px)",
+    opacity: "1",
+    visibility: "visible"
+  });
 
+  const hiddenText = document.createElement("span");
+  hiddenText.className = "visually-hidden";
+  hiddenText.textContent = "Loading";
+  preloader.appendChild(hiddenText);
+
+  const logo = document.createElement("div");
+  logo.className = "preloader__logo";
+  Object.assign(logo.style, {
+    display: "grid",
+    width: "min(clamp(180px, 26vw, 340px), 60vh)"
+  });
+
+  const layers = ["m", "r", "shine"];
+  const images = layers.map((layer) => {
+    const image = document.createElement("img");
+    image.className = "preloader__layer preloader__layer--" + layer;
+    image.src = logoUrl.href;
+    image.alt = "";
+    image.width = 1536;
+    image.height = 1024;
+    image.decoding = "async";
+    image.loading = "eager";
+    image.fetchPriority = "high";
+    logo.appendChild(image);
+    return image;
+  });
+
+  preloader.append(logo);
+  document.documentElement.appendChild(preloader);
+  document.documentElement.style.overflow = "hidden";
+
+  // Ask the browser for the logo as early as possible.
   const logoPreload = document.createElement("link");
   logoPreload.rel = "preload";
   logoPreload.as = "image";
@@ -27,103 +72,103 @@
   logoPreload.type = "image/webp";
   document.head.appendChild(logoPreload);
 
-  Promise.all([
-    fetch(htmlUrl).then((response) => {
-      if (!response.ok) throw new Error("Preloader HTML could not be loaded.");
-      return response.text();
-    }),
-    new Promise((resolve) => {
-      if (stylesheet.sheet) {
-        resolve();
-      } else {
-        stylesheet.addEventListener("load", resolve, { once: true });
-        stylesheet.addEventListener("error", resolve, { once: true });
+  const stylesheet = document.createElement("link");
+  stylesheet.rel = "stylesheet";
+  stylesheet.href = cssUrl.href;
+  document.head.appendChild(stylesheet);
+
+  const minimumVisibleMs = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches ? 350 : 1600;
+  const maximumWaitMs = 10000;
+  const fadeFallbackMs = 1000;
+
+  let pageLoaded = document.readyState === "complete";
+  let assetsReady = false;
+  let startedAt = null;
+  let hidden = false;
+
+  const hidePreloader = () => {
+    if (hidden) return;
+    hidden = true;
+    preloader.classList.add("is-hidden");
+    preloader.setAttribute("aria-hidden", "true");
+    document.documentElement.style.overflow = "";
+
+    const remove = () => preloader.remove();
+    preloader.addEventListener("transitionend", (event) => {
+      if (event.target === preloader && event.propertyName === "opacity") {
+        remove();
       }
-    }),
-  ])
-    .then(([html]) => {
-      const template = document.createElement("template");
-      template.innerHTML = html.trim();
+    }, { once: true });
+    window.setTimeout(remove, fadeFallbackMs);
+  };
 
-      const preloader = template.content.querySelector(".preloader");
-      if (!preloader || !document.body) return;
+  const tryToHide = () => {
+    if (!pageLoaded || !assetsReady || startedAt === null) return;
+    const elapsed = performance.now() - startedAt;
+    window.setTimeout(
+      hidePreloader,
+      Math.max(0, minimumVisibleMs - elapsed)
+    );
+  };
 
-      preloader.querySelectorAll("img").forEach((image) => {
-        image.src = logoUrl.href;
-      });
+  const startAnimation = () => {
+    if (assetsReady) return;
+    assetsReady = true;
+    startedAt = performance.now();
+    preloader.classList.add("is-ready");
+    tryToHide();
+  };
 
-      document.body.prepend(preloader);
+  const imagePromises = images.map((image) => new Promise((resolve) => {
+    if (image.complete && image.naturalWidth > 0) {
+      image.decode().catch(() => {}).then(resolve);
+      return;
+    }
+    image.addEventListener("load", () => {
+      image.decode().catch(() => {}).then(resolve);
+    }, { once: true });
+    image.addEventListener("error", () => {
+      console.error("Preloader logo failed to load:", logoUrl.href);
+      resolve();
+    }, { once: true });
+  }));
 
-      const prefersReducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
-      ).matches;
-      const minimumVisibleMs = prefersReducedMotion ? 400 : 1900;
-      const maximumWaitMs = 10000;
-      const fadeFallbackMs = 1200;
+  let cssReady = false;
+  const tryStart = () => {
+    if (cssReady && images.every((image) => image.complete && image.naturalWidth > 0)) {
+      startAnimation();
+    } else if (cssReady && images.some((image) => image.complete && image.naturalWidth === 0)) {
+      startAnimation();
+    }
+  };
 
-      let animationStartedAt = null;
-      let pageLoaded = document.readyState === "complete";
-      let hidden = false;
+  stylesheet.addEventListener("load", () => {
+    cssReady = true;
+    tryStart();
+  }, { once: true });
+  stylesheet.addEventListener("error", () => {
+    cssReady = true;
+    console.error("Preloader stylesheet failed to load:", cssUrl.href);
+    tryStart();
+  }, { once: true });
 
-      const hidePreloader = () => {
-        if (hidden) return;
-        hidden = true;
+  Promise.all(imagePromises).then(tryStart);
 
-        preloader.classList.add("is-hidden");
-        preloader.setAttribute("aria-hidden", "true");
+  if (!pageLoaded) {
+    window.addEventListener("load", () => {
+      pageLoaded = true;
+      tryToHide();
+    }, { once: true });
+  }
 
-        const remove = () => preloader.remove();
-        preloader.addEventListener(
-          "transitionend",
-          (event) => {
-            if (
-              event.target === preloader &&
-              event.propertyName === "opacity"
-            ) {
-              remove();
-            }
-          },
-          { once: true },
-        );
-        window.setTimeout(remove, fadeFallbackMs);
-      };
-
-      const tryToHide = () => {
-        if (!pageLoaded || animationStartedAt === null) return;
-
-        const elapsed = performance.now() - animationStartedAt;
-        window.setTimeout(
-          hidePreloader,
-          Math.max(0, minimumVisibleMs - elapsed),
-        );
-      };
-
-      const startAnimation = () => {
-        if (animationStartedAt !== null) return;
-        animationStartedAt = performance.now();
-        preloader.classList.add("is-ready");
-        tryToHide();
-      };
-
-      const images = Array.from(preloader.querySelectorAll("img"));
-      Promise.all(images.map((image) => image.decode().catch(() => {}))).then(
-        startAnimation,
-      );
-
-      if (!pageLoaded) {
-        window.addEventListener(
-          "load",
-          () => {
-            pageLoaded = true;
-            tryToHide();
-          },
-          { once: true },
-        );
-      }
-
-      window.setTimeout(hidePreloader, maximumWaitMs);
-    })
-    .catch((error) => {
-      console.error("Preloader error:", error);
-    });
+  window.setTimeout(() => {
+    if (!assetsReady) {
+      console.error("Preloader timed out while waiting for its assets.");
+      startAnimation();
+    }
+    pageLoaded = true;
+    hidePreloader();
+  }, maximumWaitMs);
 })();
