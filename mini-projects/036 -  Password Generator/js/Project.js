@@ -56,8 +56,13 @@ function passwordGenarator() {
       return option.value;
     });
 
+  if (optionSelected.length === 0) {
+    inputPassword.value = "لطفاً حداقل یک گزینه انتخاب کنید";
+    return;
+  }
   let charRandom = "";
   let characters = "";
+  let strength = 0;
 
   optionSelected.forEach(function (option) {
     const selectedCharactrs = objectOptionSelected[option];
@@ -84,12 +89,56 @@ function passwordGenarator() {
     passwordArray[randomIndex] = temp;
   }
 
+  let hasBig = false;
+  let hasSmall = false;
+  let hasNum = false;
+  let hasSpecial = false;
+
   charRandom = passwordArray.join("");
 
-  console.log("Range:", range.value);
-  console.log("Password length:", charRandom.length);
+  charRandom.split("").forEach(function (character) {
+    if (big.includes(character)) hasBig = true;
+    if (small.includes(character)) hasSmall = true;
+    if (num.includes(character)) hasNum = true;
+    if (special.includes(character)) hasSpecial = true;
+  });
+
+  let typeCount = 0;
+
+  if (hasBig) typeCount++;
+  if (hasSmall) typeCount++;
+  if (hasNum) typeCount++;
+  if (hasSpecial) typeCount++;
+
+  if (charRandom.length >= 8) strength++;
+  if (charRandom.length >= 12) strength++;
+  if (charRandom.length >= 16) strength++;
+  if (typeCount >= 3) strength++;
+  if (charRandom.length >= 20 && typeCount === 4) strength++;
+
+  let strengthText = ["ضعیف", "ضعیف", "متوسط", "خوب", "قوی", "خیلی قوی"];
+
+  titleStrength.textContent = strengthText[strength];
+
+  line.forEach(function (item, index) {
+    if (index < strength) {
+      item.style.backgroundColor =
+        strength <= 1
+          ? "var(--strength-weak)"
+          : strength <= 3
+            ? "var(--strength-medium)"
+            : "var(--strength-strong)";
+    } else {
+      item.style.backgroundColor = "var(--bg-option)";
+    }
+  });
 
   inputPassword.value = charRandom;
 }
+
+btnCopy.addEventListener("click", function () {
+  inputPassword.select();
+  document.execCommand("copy");
+});
 
 btnSubmit.addEventListener("click", passwordGenarator);
