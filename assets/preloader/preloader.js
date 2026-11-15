@@ -55,7 +55,7 @@
       document.body.prepend(preloader);
 
       const prefersReducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
+        "(prefers-reduced-motion: reduce)",
       ).matches;
       const minimumVisibleMs = prefersReducedMotion ? 400 : 1900;
       const maximumWaitMs = 10000;
@@ -76,11 +76,14 @@
         preloader.addEventListener(
           "transitionend",
           (event) => {
-            if (event.target === preloader && event.propertyName === "opacity") {
+            if (
+              event.target === preloader &&
+              event.propertyName === "opacity"
+            ) {
               remove();
             }
           },
-          { once: true }
+          { once: true },
         );
         window.setTimeout(remove, fadeFallbackMs);
       };
@@ -91,7 +94,7 @@
         const elapsed = performance.now() - animationStartedAt;
         window.setTimeout(
           hidePreloader,
-          Math.max(0, minimumVisibleMs - elapsed)
+          Math.max(0, minimumVisibleMs - elapsed),
         );
       };
 
@@ -104,7 +107,7 @@
 
       const images = Array.from(preloader.querySelectorAll("img"));
       Promise.all(images.map((image) => image.decode().catch(() => {}))).then(
-        startAnimation
+        startAnimation,
       );
 
       if (!pageLoaded) {
@@ -114,7 +117,7 @@
             pageLoaded = true;
             tryToHide();
           },
-          { once: true }
+          { once: true },
         );
       }
 

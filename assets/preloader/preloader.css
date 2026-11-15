@@ -7,10 +7,28 @@
   --preloader-fade: 700ms;
   --preloader-logo-size: min(clamp(180px, 26vw, 340px), 60vh);
 
-  --clip-m: polygon(0 0, 50.78% 0, 50.78% 35.16%, 58.27% 41.5%, 61.65% 45.9%,
-                    61.52% 67.58%, 51.43% 77.34%, 51.43% 100%, 0 100%);
-  --clip-r: polygon(50.78% 0, 100% 0, 100% 100%, 51.43% 100%, 51.43% 77.34%,
-                    61.52% 67.58%, 61.65% 45.9%, 58.27% 41.5%, 50.78% 35.16%);
+  --clip-m: polygon(
+    0 0,
+    50.78% 0,
+    50.78% 35.16%,
+    58.27% 41.5%,
+    61.65% 45.9%,
+    61.52% 67.58%,
+    51.43% 77.34%,
+    51.43% 100%,
+    0 100%
+  );
+  --clip-r: polygon(
+    50.78% 0,
+    100% 0,
+    100% 100%,
+    51.43% 100%,
+    51.43% 77.34%,
+    61.52% 67.58%,
+    61.65% 45.9%,
+    58.27% 41.5%,
+    50.78% 35.16%
+  );
 
   position: fixed;
   inset: 0;
@@ -22,16 +40,18 @@
   backdrop-filter: blur(8px);
   opacity: 1;
   visibility: visible;
-  transition: opacity var(--preloader-fade) ease,
-              visibility 0s linear 0s;
+  transition:
+    opacity var(--preloader-fade) ease,
+    visibility 0s linear 0s;
 }
 
 .preloader.is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity var(--preloader-fade) ease,
-              visibility 0s linear var(--preloader-fade);
+  transition:
+    opacity var(--preloader-fade) ease,
+    visibility 0s linear var(--preloader-fade);
 }
 
 html:has(.preloader:not(.is-hidden)) {
@@ -69,23 +89,38 @@ html:has(.preloader:not(.is-hidden)) {
   will-change: transform, opacity;
 }
 
-.preloader__layer--m { clip-path: var(--clip-m); }
-.preloader__layer--r { clip-path: var(--clip-r); }
+.preloader__layer--m {
+  clip-path: var(--clip-m);
+}
+.preloader__layer--r {
+  clip-path: var(--clip-r);
+}
 
 .is-ready .preloader__layer--m {
   animation: preloader-slide-from-left 1000ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .is-ready .preloader__layer--r {
-  animation: preloader-slide-from-right 1000ms cubic-bezier(0.16, 1, 0.3, 1) 120ms both;
+  animation: preloader-slide-from-right 1000ms cubic-bezier(0.16, 1, 0.3, 1)
+    120ms both;
 }
 
 .preloader__layer--shine {
   opacity: 0;
   filter: brightness(1.9) saturate(0.7);
   pointer-events: none;
-  -webkit-mask-image: linear-gradient(105deg, transparent 38%, #000 50%, transparent 62%);
-  mask-image: linear-gradient(105deg, transparent 38%, #000 50%, transparent 62%);
+  -webkit-mask-image: linear-gradient(
+    105deg,
+    transparent 38%,
+    #000 50%,
+    transparent 62%
+  );
+  mask-image: linear-gradient(
+    105deg,
+    transparent 38%,
+    #000 50%,
+    transparent 62%
+  );
   -webkit-mask-size: 300% 100%;
   mask-size: 300% 100%;
   -webkit-mask-repeat: no-repeat;
@@ -99,29 +134,61 @@ html:has(.preloader:not(.is-hidden)) {
 }
 
 @keyframes preloader-slide-from-left {
-  from { opacity: 0; transform: translate3d(-9%, 0, 0) scale(0.97); }
-  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translate3d(-9%, 0, 0) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
 }
 
 @keyframes preloader-slide-from-right {
-  from { opacity: 0; transform: translate3d(9%, 0, 0) scale(0.97); }
-  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translate3d(9%, 0, 0) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
 }
 
 @keyframes preloader-shine {
-  0% { opacity: 0; -webkit-mask-position: 100% 0; mask-position: 100% 0; }
-  20%, 80% { opacity: 0.65; }
-  100% { opacity: 0; -webkit-mask-position: 0 0; mask-position: 0 0; }
+  0% {
+    opacity: 0;
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+  20%,
+  80% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 0;
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
 }
 
 @keyframes preloader-breathe {
-  0%, 100% { scale: 1; }
-  50% { scale: 1.025; }
+  0%,
+  100% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.025;
+  }
 }
 
 @keyframes preloader-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .visually-hidden {
@@ -137,14 +204,22 @@ html:has(.preloader:not(.is-hidden)) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .preloader { --preloader-fade: 300ms; }
+  .preloader {
+    --preloader-fade: 300ms;
+  }
 
   .is-ready .preloader__layer--m,
   .is-ready .preloader__layer--r {
     animation: preloader-fade-in 400ms ease both;
   }
 
-  .preloader__layer--shine { display: none; }
-  .is-ready .preloader__logo { animation: none; }
-  .preloader.is-hidden .preloader__logo { transform: none; }
+  .preloader__layer--shine {
+    display: none;
+  }
+  .is-ready .preloader__logo {
+    animation: none;
+  }
+  .preloader.is-hidden .preloader__logo {
+    transform: none;
+  }
 }
