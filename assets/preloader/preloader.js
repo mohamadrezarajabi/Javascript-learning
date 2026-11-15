@@ -29,8 +29,6 @@
     background: "rgba(16, 23, 32, 0.42)",
     backdropFilter: "blur(8px)",
     webkitBackdropFilter: "blur(8px)",
-    opacity: "1",
-    visibility: "visible"
   });
 
   const hiddenText = document.createElement("span");
