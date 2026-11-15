@@ -11,7 +11,7 @@
   const assetsUrl = new URL(".", currentScript.src);
   const htmlUrl = new URL("preloader.html", assetsUrl);
   const cssUrl = new URL("preloader.css", assetsUrl);
-  const logoUrl = new URL("logo.webp", assetsUrl);
+  const logoUrl = new URL("../images/Logo.webp", assetsUrl);
 
   if (document.getElementById("preloader")) return;
 
