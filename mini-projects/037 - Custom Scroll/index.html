@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Count words, characters, sentences and paragraphs as you type."
+    />
+    <title>036</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Vazirmatn:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="preload"
+      as="image"
+      href="../../assets/images/Logo.webp"
+      type="image/webp"
+      fetchpriority="high"
+    />
+    <link rel="stylesheet" href="../../assets/preloader/preloader.css" />
+    <link rel="stylesheet" href="../../assets/style/common.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <div
+      class="preloader"
+      id="preloader"
+      role="status"
+      aria-live="polite"
+      style="
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      "
+    >
+      <span class="visually-hidden">Loading</span>
+      <div
+        class="preloader__logo"
+        style="
+          display: grid;
+          width: min(clamp(180px, 26vw, 340px), 60vh);
+          max-width: calc(100vw - 48px);
+        "
+      >
+        <img
+          class="preloader__layer preloader__layer--m"
+          src="../../assets/images/Logo.webp"
+          alt=""
+          width="1536"
+          height="1024"
+          fetchpriority="high"
+          decoding="async"
+          style="
+            grid-area: 1 / 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+          "
+        />
+        <img
+          class="preloader__layer preloader__layer--r"
+          src="../../assets/images/Logo.webp"
+          alt=""
+          width="1536"
+          height="1024"
+          fetchpriority="high"
+          decoding="async"
+          style="
+            grid-area: 1 / 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+          "
+        />
+        <img
+          class="preloader__layer preloader__layer--shine"
+          src="../../assets/images/Logo.webp"
+          alt=""
+          width="1536"
+          height="1024"
+          fetchpriority="high"
+          decoding="async"
+          aria-hidden="true"
+          style="
+            grid-area: 1 / 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+          "
+        />
+      </div>
+    </div>
+
+    <div class="container wrap">
+      <header class="header">
+        <h2>مقاله درباره شروع برنامه نویسی</h2>
+        <div class="info">
+          <div class="calendar">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="21"
+              height="21"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-calendar-days preview-icon"
+            >
+              <path d="M8 2v3" />
+              <path d="M16 2v3" />
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M3 9h18" />
+              <path d="M8 13h.01" />
+              <path d="M12 13h.01" />
+              <path d="M16 13h.01" />
+              <path d="M8 17h.01" />
+              <path d="M12 17h.01" />
+              <path d="M16 17h.01" />
+            </svg>
+            <span>26 آبان 1405</span>
+          </div>
+          <div class="line"></div>
+          <div class="time">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="21"
+              height="21"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-clock preview-icon"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 6v6l4 2" />
+            </svg>
+            <span>4 دقیقه</span>
+          </div>
+        </div>
+      </header>
+      <div class="progress-overllay">
+        <div class="progress-bar"></div>
+      </div>
+      <main class="main-content">
+        <!-- Article Navigation -->
+        <nav class="article-navigation" aria-label="فهرست مقاله">
+          <span class="navigation-label">در این مقاله:</span>
+
+          <div class="navigation-links">
+            <a href="#introduction" class="navigation-link active">
+              شروع از صفر
+            </a>
+
+            <a href="#code" class="navigation-link"> کد چیست؟ </a>
+
+            <a href="#programming" class="navigation-link"> برنامه‌نویسی </a>
+
+            <a href="#languages" class="navigation-link"> زبان‌ها </a>
+
+            <a href="#getting-started" class="navigation-link">
+              شروع یادگیری
+            </a>
+
+            <a href="#conclusion" class="navigation-link"> جمع‌بندی </a>
+          </div>
+        </nav>
+
+        <!-- Main Article -->
+        <article class="article-container">
+          <!-- Article Header -->
+          <header class="article-header" id="introduction">
+            <span class="article-category"> راهنمای شروع برنامه‌نویسی </span>
+
+            <h1>
+              برنامه‌نویسی چیست؟
+              <span>راهنمای شروع از صفر</span>
+            </h1>
+
+            <p class="article-description">
+              اگر همیشه دوست داشتی برنامه‌نویسی رو یاد بگیری اما نمی‌دونستی از
+              کجا شروع کنی، این مقاله برای توئه. بیا بدون اصطلاحات پیچیده با
+              دنیای برنامه‌نویسی آشنا بشیم.
+            </p>
+
+
+          </header>
+
+          <!-- Audience Notice -->
+          <aside class="audience-notice">
+            <div class="notice-icon">!</div>
+
+            <div class="notice-content">
+              <h2>قبل از شروع، اینو بدون!</h2>
+
+              <p>
+                این مقاله مخصوص کسانیه که هیچ آشنایی قبلی با برنامه‌نویسی ندارن؛
+                حتی اگه ندونن کد چیه یا برنامه‌ها چطور ساخته می‌شن.
+              </p>
+
+              <p>
+                اگه از قبل برنامه‌نویسی بلدی، احتمالاً این مقاله چیز جدیدی برات
+                نداره!
+              </p>
+            </div>
+          </aside>
+
+          <!-- Article Introduction -->
+          <section class="article-section introduction-section">
+            <h2>اصلاً چرا برنامه‌نویسی؟</h2>
+
+            <p>
+              از سایت‌هایی که هر روز باز می‌کنی تا بازی‌ها و برنامه‌هایی که با
+              گوشی استفاده می‌کنی، همه با کمک برنامه‌نویسی ساخته شدن.
+            </p>
+
+            <p>
+              شاید برات جالب باشه بدونی که تو هم می‌تونی چنین چیزهایی بسازی.
+              برای این کار فقط باید قدم‌به‌قدم یاد بگیری.
+            </p>
+          </section>
+
+          <!-- Section 1 -->
+          <section class="article-section" id="computer">
+            <span class="section-number">01</span>
+
+            <h2>کامپیوتر چیه؟</h2>
+
+            <p>
+              کامپیوتر دستگاهیه که اطلاعات رو دریافت می‌کنه، روی اون‌ها کار
+              انجام می‌ده و نتیجه رو به ما نشون می‌ده.
+            </p>
+
+            <p>
+              مثلاً وقتی با ماشین‌حساب گوشی عدد ۵ و ۳ رو جمع می‌کنی، گوشی نتیجه
+              ۸ رو بهت نشون می‌ده.
+            </p>
+
+            <div class="example-box">
+              <span class="example-label">یک مثال ساده</span>
+
+              <p>
+                اطلاعات ورودی:
+                <strong>۵ و ۳</strong>
+              </p>
+
+              <p>
+                نتیجه:
+                <strong>۸</strong>
+              </p>
+            </div>
+
+            <p class="section-note">
+              برای شروع برنامه‌نویسی لازم نیست بدونی قطعات داخلی کامپیوتر چطور
+              کار می‌کنن.
+            </p>
+          </section>
+
+          <!-- Section 2 -->
+          <section class="article-section" id="code">
+            <span class="section-number">02</span>
+
+            <h2>برنامه و کد چه فرقی دارن؟</h2>
+
+            <p>
+              برنامه مجموعه‌ای از دستورهاست که به کامپیوتر می‌گه چطور یک کار رو
+              انجام بده.
+            </p>
+
+            <p>
+              مثلاً ماشین‌حساب، بازی، مرورگر اینترنت و برنامه‌های پیام‌رسان همگی
+              برنامه هستن.
+            </p>
+
+            <p>
+              اما <strong>کد</strong> همون دستورهاییه که برنامه‌نویس می‌نویسه تا
+              کامپیوتر بتونه اون‌ها رو اجرا کنه.
+            </p>
+
+            <div class="highlight-box">
+              <p>
+                <strong>برنامه:</strong>
+                چیزی که ساخته می‌شه.
+              </p>
+
+              <p>
+                <strong>کد:</strong>
+                دستورهایی که برای ساخت و اجرای اون نوشته می‌شن.
+              </p>
+            </div>
+          </section>
+
+          <!-- Section 3 -->
+          <section class="article-section" id="programming">
+            <span class="section-number">03</span>
+
+            <h2>برنامه‌نویسی یعنی چی؟</h2>
+
+            <p>
+              برنامه‌نویسی یعنی یک مسئله رو بررسی کنیم، راه‌حلش رو پیدا کنیم و
+              اون رو به دستورهایی تبدیل کنیم که کامپیوتر بتونه اجراشون کنه.
+            </p>
+
+            <p>
+              فرض کن می‌خوای یک ماشین‌حساب ساده بسازی. برای این کار باید به
+              کامپیوتر بگی:
+            </p>
+
+            <ol class="instruction-list">
+              <li>عدد اول رو از کاربر دریافت کن.</li>
+
+              <li>عدد دوم رو دریافت کن.</li>
+
+              <li>این دو عدد رو با هم جمع کن.</li>
+
+              <li>نتیجه رو به کاربر نشون بده.</li>
+            </ol>
+
+            <div class="important-box">
+              <span class="important-label">نکته مهم</span>
+
+              <p>
+                برنامه‌نویسی فقط تایپ کردن کد نیست؛ بخش مهمش اینه که یاد بگیری
+                چطور مسئله‌ها رو به قدم‌های کوچک‌تر تقسیم کنی و براشون راه‌حل
+                پیدا کنی.
+              </p>
+            </div>
+          </section>
+
+          <!-- Section 4 -->
+          <section class="article-section" id="languages">
+            <span class="section-number">04</span>
+
+            <h2>زبان برنامه‌نویسی چیه؟</h2>
+
+            <p>
+              برای نوشتن دستورها و ساخت برنامه‌ها از زبان‌های برنامه‌نویسی
+              استفاده می‌کنیم.
+            </p>
+
+            <p>هر زبان کاربردهای خودش رو داره. چند نمونه معروف رو ببین:</p>
+
+            <div class="language-list">
+              <div class="language-item">
+                <h3>Python</h3>
+                <p>برای ساخت برنامه‌ها، کار با اطلاعات و هوش مصنوعی.</p>
+              </div>
+
+              <div class="language-item">
+                <h3>JavaScript</h3>
+                <p>برای ساخت سایت‌های تعاملی و امکانات صفحات وب.</p>
+              </div>
+
+              <div class="language-item">
+                <h3>Java</h3>
+                <p>برای ساخت انواع نرم‌افزارها و برنامه‌های مختلف.</p>
+              </div>
+            </div>
+
+            <p class="section-note">
+              لازم نیست همه زبان‌ها رو یاد بگیری. انتخاب زبان به هدفی که داری
+              بستگی داره.
+            </p>
+          </section>
+
+          <!-- Section 5 -->
+          <section class="article-section" id="difficulty">
+            <span class="section-number">05</span>
+
+            <h2>آیا برنامه‌نویسی سخته؟</h2>
+
+            <p>یادگیری برنامه‌نویسی همیشه آسون نیست، اما غیرممکن هم نیست.</p>
+
+            <p>
+              ممکنه اوایل با خطاهایی روبه‌رو بشی که دلیلشون رو متوجه نشی. این
+              اتفاق کاملاً طبیعیه.
+            </p>
+
+            <div class="important-box">
+              <p>
+                <strong> اشتباه کردن بخشی از یادگیریه. </strong>
+                مهم اینه که از خطاها درس بگیری و به تمرین ادامه بدی.
+              </p>
+            </div>
+
+            <p>برای شروع هم به ریاضیات پیشرفته یا مدرک دانشگاهی نیاز نداری.</p>
+          </section>
+
+          <!-- Section 6 -->
+          <section class="article-section" id="getting-started">
+            <span class="section-number">06</span>
+
+            <h2>از کجا برنامه‌نویسی رو شروع کنیم؟</h2>
+
+            <p>حالا که با مفاهیم اولیه آشنا شدی، وقتشه اولین قدمت رو برداری.</p>
+
+            <div class="steps-list">
+              <div class="step-item">
+                <span class="step-number">۱</span>
+
+                <div>
+                  <h3>یک هدف مشخص کن</h3>
+
+                  <p>
+                    دوست داری سایت بسازی، برنامه کامپیوتری بنویسی یا وارد دنیای
+                    هوش مصنوعی بشی؟
+                  </p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <span class="step-number">۲</span>
+
+                <div>
+                  <h3>یک زبان انتخاب کن</h3>
+
+                  <p>
+                    برای شروع می‌تونی Python رو انتخاب کنی و مفاهیم اولیه
+                    برنامه‌نویسی رو باهاش یاد بگیری.
+                  </p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <span class="step-number">۳</span>
+
+                <div>
+                  <h3>تمرین کن</h3>
+
+                  <p>
+                    فقط ویدئو نبین؛ خودت کد بنویس، اجراش کن و نتیجه رو بررسی کن.
+                  </p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <span class="step-number">۴</span>
+
+                <div>
+                  <h3>پروژه‌های کوچک بساز</h3>
+
+                  <p>
+                    با یک ماشین‌حساب ساده یا بازی حدس عدد شروع کن. لازم نیست از
+                    همون اول پروژه بزرگی بسازی.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Conclusion -->
+          <section class="article-conclusion" id="conclusion">
+            <span class="conclusion-label">حرف آخر</span>
+
+            <h2>هر مسیری با یک قدم شروع می‌شه!</h2>
+
+            <p>
+              حالا با مفهوم برنامه‌نویسی و بعضی از اصطلاحات اولیه اون آشنا شدی.
+            </p>
+
+            <p>
+              لازم نیست از همین ابتدا همه‌چیز رو بدونی. مهم اینه که شروع کنی،
+              تمرین کنی و کم‌کم چیزهای جدیدتری یاد بگیری.
+            </p>
+
+            <strong>
+              برنامه‌نویس شدن از بلد بودن همه‌چیز شروع نمی‌شه؛ از تصمیم گرفتن
+              برای یادگیری شروع می‌شه.
+            </strong>
+          </section>
+
+          <!-- Next Step -->
+          <section class="next-step">
+            <div class="next-step-content">
+              <span>قدم بعدی تو</span>
+
+              <h2>حالا وقت شروع یادگیریه!</h2>
+
+              <p>
+                اولین پروژه کوچکت رو بساز و چیزهایی که یاد گرفتی به کار بگیر.
+              </p>
+            </div>
+
+            <a href="#introduction" class="back-to-top">
+              بازگشت به ابتدای مقاله ↑
+            </a>
+          </section>
+        </article>
+      </main>
+    </div>
+
+    <!-- MR Signature Footer -->
+    <footer class="mr-signature" dir="ltr" lang="en">
+      <div class="mr-signature__identity">
+        <img
+          src="../../assets/images/Logo.webp"
+          alt=""
+          width="29"
+          height="21"
+          class="mr-signature__badge"
+        />
+        <span class="mr-signature__text">
+          <span class="mr-signature__name">Mohamad Reza Rajabi</span>
+          <span class="mr-signature__role">— design &amp; development</span>
+        </span>
+      </div>
+      <div class="mr-signature__links">
+        <span class="mr-signature__year">© <span data-year></span></span>
+        <a
+          href="https://github.com/mohamadrezarajabi"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub profile"
+        >
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
+            />
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+      <script>
+        document
+          .querySelectorAll(".mr-signature [data-year]")
+          .forEach(function (el) {
+            el.textContent = new Date().getFullYear();
+          });
+      </script>
+    </footer>
+
+    <script src="js/Project.js"></script>
+    <script src="../../assets/preloader/preloader.js" defer></script>
+  </body>
+</html>
