@@ -782,3 +782,102 @@ body {
     font-size: var(--font-size-lg);
   }
 }
+
+/* =========================
+   Responsive Page Header
+========================= */
+
+.header {
+  min-width: 0;
+  gap: 24px;
+}
+
+.header h2 {
+  min-width: 0;
+  margin: 0;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.info {
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  row-gap: 10px;
+}
+
+.calendar,
+.time {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.calendar span,
+.time span {
+  height: auto;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 1.25rem;
+  }
+
+  .header h2 {
+    width: 100%;
+    font-size: 1.15rem;
+  }
+
+  .info {
+    width: 100%;
+    gap: 12px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 1rem;
+    gap: 10px;
+  }
+
+  .header h2 {
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .info {
+    gap: 8px 12px;
+    font-size: 0.8rem;
+  }
+
+  .calendar span,
+  .time span {
+    font-size: 0.8rem;
+  }
+
+  .calendar svg,
+  .time svg {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+  }
+
+  .line {
+    height: 20px;
+  }
+}
+
+@media (max-width: 350px) {
+  .info {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .line {
+    display: none;
+  }
+}
