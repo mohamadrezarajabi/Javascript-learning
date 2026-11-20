@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fa" dir="rtl">
+<html lang="na">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +7,7 @@
       name="description"
       content="Count words, characters, sentences and paragraphs as you type."
     />
-    <title>036</title>
+    <title>038</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -120,7 +120,10 @@
           <div class="workspace-image">
             <img
               src="./images/image.png"
-              alt="Laptop with code, a green plant and a coffee mug"
+              alt="Developer workspace with laptop, plant and coffee mug"
+              width="1648"
+              height="900"
+              fetchpriority="high"
             />
           </div>
         </section>
@@ -131,7 +134,7 @@
             <p class="login-description">Enter your credentials to login</p>
 
             <form class="login-form">
-              <div class="input-group">
+              <div class="input-group username">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                   <circle cx="12" cy="7" r="4" />
@@ -142,10 +145,12 @@
                   name="username"
                   placeholder="Username"
                   autocomplete="username"
+                  id="inputUsername"
+                  required
                 />
               </div>
 
-              <div class="input-group">
+              <div class="input-group password">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <rect x="3" y="11" width="18" height="11" rx="2" />
                   <path d="M7 11V7a5 5 0 0 1 10 0v4" />
@@ -157,6 +162,8 @@
                   name="password"
                   placeholder="Password"
                   autocomplete="current-password"
+                  id="inputPassword"
+                  required
                 />
 
                 <button
@@ -182,7 +189,7 @@
                 <a href="#">Forgot password?</a>
               </div>
 
-              <button class="sign-in-button" type="submit">
+              <button class="sign-in-button" type="submit" disabled>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
