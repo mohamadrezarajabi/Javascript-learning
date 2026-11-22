@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Count words, characters, sentences and paragraphs as you type."
+    />
+    <title>039</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Vazirmatn:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="preload"
+      as="image"
+      href="../../assets/images/Logo.webp"
+      type="image/webp"
+      fetchpriority="high"
+    />
+    <link rel="stylesheet" href="../../assets/preloader/preloader.css" />
+    <link rel="stylesheet" href="../../assets/style/common.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <div
+      class="preloader"
+      id="preloader"
+      role="status"
+      aria-live="polite"
+      style="
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      "
+    >
+      <span class="visually-hidden">Loading</span>
+      <div
+        class="preloader__logo"
+        style="
+          display: grid;
+          width: min(clamp(180px, 26vw, 340px), 60vh);
+          max-width: calc(100vw - 48px);
+        "
+      >
+        <img
+          class="preloader__layer preloader__layer--m"
+          src="../../assets/images/Logo.webp"
+          alt=""
+          width="1536"
+          height="1024"
+          fetchpriority="high"
+          decoding="async"
+          style="
+            grid-area: 1 / 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+          "
+        />
+        <img
+          class="preloader__layer preloader__layer--r"
+          src="../../assets/images/Logo.webp"
+          alt=""
+          width="1536"
+          height="1024"
+          fetchpriority="high"
+          decoding="async"
+          style="
+            grid-area: 1 / 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+          "
+        />
+        <img
+          class="preloader__layer preloader__layer--shine"
+          src="../../assets/images/Logo.webp"
+          alt=""
+          width="1536"
+          height="1024"
+          fetchpriority="high"
+          decoding="async"
+          aria-hidden="true"
+          style="
+            grid-area: 1 / 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+          "
+        />
+      </div>
+    </div>
+
+    <div class="container wrap">
+      <header class="header">
+        <div class="logo">
+          <img src="/assets/images/Logo.webp" alt="logo" width="55px" />
+          <h1>NOVA<span>TECH</span></h1>
+        </div>
+        <div class="right-header">
+          <div class="shoping-card">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-shopping-cart preview-icon"
+            >
+              <path
+                d="m2.05 2.05 1.099-.028a1 1 0 0 1 1.008.815l2.69 14.347A1 1 0 0 0 7.83 18H18"
+              />
+              <path
+                d="M4.563 5h16.435a1 1 0 0 1 .981 1.204l-1.026 6.226A2 2 0 0 1 18.962 14H6.25"
+              />
+              <circle cx="18" cy="20" r="2" />
+              <circle cx="8" cy="20" r="2" />
+            </svg>
+          </div>
+          <div class="search-bar">
+            <input type="text" placeholder="جستجو محصولات..." name="product" />
+            <div class="search-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-search preview-icon"
+              >
+                <path d="m21 21-4.34-4.34" />
+                <circle cx="11" cy="11" r="8" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </header>
+      <img
+        src="./images/تکنولوژی، یک قدم جلوتر.png"
+        alt=""
+        class="img-banner"
+      />
+      <main class="main">
+        <section class="products-toolbar">
+          <div class="products-heading">
+            <div class="heading-title">
+              <span class="heading-line"></span>
+              <h2>محصولات ما</h2>
+            </div>
+
+            <p>محصول موردنظرت رو پیدا کن.</p>
+          </div>
+
+          <div class="toolbar-controls">
+            <div class="filter-select">
+              <select name="category">
+                <option value="all">همه محصولات</option>
+                <option value="mobile">موبایل</option>
+                <option value="laptop">لپ‌تاپ</option>
+                <option value="headphone">هدفون</option>
+                <option value="watch">ساعت هوشمند</option>
+                <option value="accessory">لوازم جانبی</option>
+              </select>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </div>
+
+            <!-- Sort -->
+            <div class="filter-select">
+              <select name="sort">
+                <option value="default">پیش‌فرض</option>
+                <option value="cheapest">ارزان‌ترین</option>
+                <option value="expensive">گران‌ترین</option>
+                <option value="popular">محبوب‌ترین</option>
+                <option value="newest">جدیدترین</option>
+              </select>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </div>
+
+            <!-- Availability Filter -->
+            <label class="availability-filter">
+              <input type="checkbox" name="available" />
+
+              <span class="toggle-switch"></span>
+
+              <span class="availability-text"> فقط کالاهای موجود </span>
+            </label>
+          </div>
+
+          <button class="clear-filters" type="button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 12a9 9 0 1 0 2.6-6.4L3 8" />
+              <path d="M3 3v5h5" />
+            </svg>
+
+            <span>پاک کردن فیلترها</span>
+          </button>
+        </section>
+        <section class="cards">
+          <ul class="cards-ul">
+            <li class="card-li"></li>
+            <li class="card-li"></li>
+            <li class="card-li"></li>
+            <li class="card-li"></li>
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <!-- MR Signature Footer -->
+    <footer class="mr-signature" dir="ltr" lang="en">
+      <div class="mr-signature__identity">
+        <img
+          src="../../assets/images/Logo.webp"
+          alt=""
+          width="29"
+          height="21"
+          class="mr-signature__badge"
+        />
+        <span class="mr-signature__text">
+          <span class="mr-signature__name">Mohamad Reza Rajabi</span>
+          <span class="mr-signature__role">— design &amp; development</span>
+        </span>
+      </div>
+      <div class="mr-signature__links">
+        <span class="mr-signature__year">© <span data-year></span></span>
+        <a
+          href="https://github.com/mohamadrezarajabi"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub profile"
+        >
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
+            />
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+      <script>
+        document
+          .querySelectorAll(".mr-signature [data-year]")
+          .forEach(function (el) {
+            el.textContent = new Date().getFullYear();
+          });
+      </script>
+    </footer>
+
+    <script src="js/Project.js"></script>
+    <script src="../../assets/preloader/preloader.js" defer></script>
+  </body>
+</html>
