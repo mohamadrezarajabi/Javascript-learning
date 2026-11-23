@@ -174,15 +174,19 @@ body {
 
 .shoping-card::after {
   position: absolute;
-  content: "";
+  content: attr(data-count);
   background-color: var(--color-error);
   padding: 4px 5px 2px 6px;
   right: -8px;
   top: -8px;
   font-size: 11px;
   border-radius: 999px;
+}
+
+.shoping-card[data-show="hidden"]::after {
   display: none;
 }
+
 .search-bar {
   position: relative;
   width: 600px;
@@ -260,15 +264,15 @@ body {
   font-size: var(--font-size-sm);
 }
 
-/* Controls */
+main {
+  margin-bottom: 2rem;
+}
 
 .toolbar-controls {
   display: flex;
   align-items: center;
   gap: var(--spacing-5);
 }
-
-/* Select */
 
 .filter-select {
   position: relative;
@@ -307,8 +311,6 @@ body {
   color: var(--color-text-secondary);
   pointer-events: none;
 }
-
-/* Availability */
 
 .availability-filter {
   display: flex;
@@ -407,7 +409,9 @@ body {
   border-radius: 1.15rem;
   background: linear-gradient(145deg, #20202a 0%, #17171f 100%);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
-  transition: transform var(--transition-base), border-color var(--transition-base);
+  transition:
+    transform var(--transition-slow),
+    border-color var(--transition-base);
 }
 
 .card-li:hover {
@@ -532,7 +536,9 @@ body {
   font-family: var(--font-primary);
   font-size: 0.72rem;
   cursor: pointer;
-  transition: background var(--transition-fast), border-color var(--transition-fast);
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast);
 }
 
 .card-add-button {
@@ -545,6 +551,45 @@ body {
 
 .card-add-button:hover {
   background: linear-gradient(100deg, #994dfb, #8139ed);
+}
+
+.append-product {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  direction: ltr;
+  color: var(--color-text);
+}
+
+.append-product div {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.append-product div:hover {
+  color: #fff;
+}
+
+.append-product div:active {
+  transform: scale(0.92);
+}
+
+.count-product {
+  min-width: 20px;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
 }
 
 .card-details-button {
