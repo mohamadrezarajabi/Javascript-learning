@@ -29,7 +29,7 @@ const products = [
   },
   {
     id: 3,
-    name: "iPhone 15",
+    name: "iPhone 15 PRO MAX",
     category: "mobile",
     categoryLabel: "موبایل",
     image: "assets/images/products/iphone-15.webp",
