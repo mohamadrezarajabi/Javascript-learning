@@ -175,7 +175,7 @@ body {
 .shoping-card::after {
   position: absolute;
   content: attr(data-count);
-  background-color: var(--color-error);
+  background-color: var(--color-primary);
   padding: 4px 5px 2px 6px;
   right: -8px;
   top: -8px;

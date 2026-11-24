@@ -609,7 +609,7 @@ function renderProducts() {
           }
           
 
-          <button class="card-details-button" type="button">
+          <button class="card-details-button" type="button" data-id='${product.id}'>
             <span>مشاهده جزئیات</span>
           </button>
         </li>
@@ -707,5 +707,13 @@ ulElem.addEventListener("click", function (event) {
 
     saveBasket();
     updateBasketCount();
+  }
+
+  const detailsButton = event.target.closest(".card-details-button");
+
+  if (detailsButton) {
+    const productId = detailsButton.dataset.id;
+
+    window.location.href = `product.html?id=${productId}`;
   }
 });
