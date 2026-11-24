@@ -11,7 +11,7 @@ const cartCount = document.querySelector(".product-cart-count");
 const quantityValue = document.querySelector("#quantity-value");
 const addButton = document.querySelector("#add-to-basket");
 const feedback = document.querySelector("#product-feedback");
-let quantity = Math.max(1, basket[productId] || 1);
+let quantity = 1;
 
 function formatNumber(value) {
   return new Intl.NumberFormat("fa-IR").format(value);
