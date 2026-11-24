@@ -3,11 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="مشاهده جزئیات محصول در فروشگاه NOVA TECH" />
+    <meta
+      name="description"
+      content="مشاهده جزئیات محصول در فروشگاه NOVA TECH"
+    />
     <title>جزئیات محصول | NOVA TECH</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../../assets/style/common.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/product.css" />
@@ -15,14 +21,31 @@
   <body class="product-page">
     <div class="product-container">
       <header class="product-header">
-        <a class="product-brand" href="index.html" aria-label="بازگشت به صفحه اصلی">
+        <a
+          class="product-brand"
+          href="index.html"
+          aria-label="بازگشت به صفحه اصلی"
+        >
           <img src="../../assets/images/Logo.webp" alt="" />
           <span>NOVA<strong>TECH</strong></span>
         </a>
         <div class="product-header-actions">
-          <a class="back-link" href="index.html">بازگشت به فروشگاه <span aria-hidden="true">←</span></a>
-          <a class="product-cart" href="index.html#basket" aria-label="سبد خرید">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 3h2l2.2 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L22 7H6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20" r="1.3" fill="currentColor"/><circle cx="18" cy="20" r="1.3" fill="currentColor"/></svg>
+          <a
+            class="product-cart"
+            href="index.html#basket"
+            aria-label="سبد خرید"
+          >
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M3 3h2l2.2 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L22 7H6"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <circle cx="10" cy="20" r="1.3" fill="currentColor" />
+              <circle cx="18" cy="20" r="1.3" fill="currentColor" />
+            </svg>
             <span class="product-cart-count" data-count="0">۰</span>
           </a>
         </div>
@@ -30,7 +53,9 @@
 
       <main class="product-main">
         <nav class="product-breadcrumb" aria-label="مسیر صفحه">
-          <a href="index.html">فروشگاه</a><span>/</span><span id="breadcrumb-category">محصول</span><span>/</span><strong id="breadcrumb-name">جزئیات محصول</strong>
+          <a href="index.html">فروشگاه</a><span>/</span
+          ><span id="breadcrumb-category">محصول</span><span>/</span
+          ><strong id="breadcrumb-name">جزئیات محصول</strong>
         </nav>
 
         <section class="product-panel" id="product-content" aria-live="polite">
@@ -52,25 +77,48 @@
               <span id="review-count"></span>
             </div>
 
-            <p class="product-intro">اطلاعات و قیمت این کالا بر اساس داده‌های ثبت‌شده در فروشگاه نمایش داده می‌شود.</p>
+            <p class="product-intro">
+              اطلاعات و قیمت این کالا بر اساس داده‌های ثبت‌شده در فروشگاه نمایش
+              داده می‌شود.
+            </p>
 
             <div class="product-divider"></div>
 
             <div class="product-price-area" id="product-price-area"></div>
 
             <div class="product-facts">
-              <div><span>دسته‌بندی</span><strong id="fact-category"></strong></div>
+              <div>
+                <span>دسته‌بندی</span><strong id="fact-category"></strong>
+              </div>
               <div><span>وضعیت</span><strong id="fact-stock"></strong></div>
-              <div><span>شناسه محصول</span><strong id="fact-id" dir="ltr"></strong></div>
+              <div>
+                <span>شناسه محصول</span><strong id="fact-id" dir="ltr"></strong>
+              </div>
             </div>
 
             <div class="product-buy-row">
               <div class="product-quantity" aria-label="تعداد محصول">
-                <button type="button" id="quantity-plus" aria-label="افزایش تعداد">+</button>
+                <button
+                  type="button"
+                  id="quantity-plus"
+                  aria-label="افزایش تعداد"
+                >
+                  +
+                </button>
                 <strong id="quantity-value">۱</strong>
-                <button type="button" id="quantity-minus" aria-label="کاهش تعداد">−</button>
+                <button
+                  type="button"
+                  id="quantity-minus"
+                  aria-label="کاهش تعداد"
+                >
+                  −
+                </button>
               </div>
-              <button type="button" class="product-add-button" id="add-to-basket">
+              <button
+                type="button"
+                class="product-add-button"
+                id="add-to-basket"
+              >
                 افزودن به سبد خرید
                 <span aria-hidden="true">←</span>
               </button>
@@ -79,7 +127,9 @@
           </div>
         </section>
 
-        <p class="product-notice" id="product-notice" hidden>محصول موردنظر پیدا نشد. از صفحه فروشگاه یک محصول انتخاب کن.</p>
+        <p class="product-notice" id="product-notice" hidden>
+          محصول موردنظر پیدا نشد. از صفحه فروشگاه یک محصول انتخاب کن.
+        </p>
       </main>
 
       <footer class="product-footer">
@@ -88,6 +138,6 @@
       </footer>
     </div>
     <script src="js/products.js"></script>
-    <script src="js/product.js"></script>
+    <script src="js/Project.js"></script>
   </body>
 </html>

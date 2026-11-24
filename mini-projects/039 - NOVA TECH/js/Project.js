@@ -214,4 +214,5 @@ ulElem.addEventListener("click", function (event) {
 
     window.location.href = `product.html?id=${productId}`;
   }
+
 });
